@@ -1,0 +1,10 @@
+.App{
+  background-color: rgb(139, 186, 230);
+}
+
+.titulo-principal{
+  font-size: x-large;
+  background-color: rgb(139, 186, 230);
+  height: 4vh;
+  text-align: center;
+}
