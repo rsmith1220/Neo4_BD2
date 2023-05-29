@@ -8,3 +8,22 @@
   height: 4vh;
   text-align: center;
 }
+
+.contiene{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; 
+  grid-gap: 5px;
+}
+.infor{
+  margin: 20px;
+}
+.buscador{
+  font-size: 20px;
+  text-align: center;
+  margin: 5px;
+}
+
+input{
+  width: 400px;
+  height: 25px;
+}
