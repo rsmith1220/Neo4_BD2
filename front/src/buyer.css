@@ -1,7 +1,7 @@
 .App{
-  background-color: rgb(139, 186, 230);
-}
-
+    background-color: rgb(139, 186, 230);
+  }
+  
 .titulo-principal{
   font-size: x-large;
   background-color: rgb(139, 186, 230);
@@ -9,9 +9,9 @@
   text-align: center;
 }
 
-.contiene{
+.has{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr; 
+  grid-template-columns: 1fr 1fr; 
   grid-gap: 5px;
 }
 .infor{
@@ -28,7 +28,7 @@ input{
   height: 25px;
 }
 .cambios{
-  color: black;
+    color: black;
   background-color: rgb(136, 240, 176);
   padding-left: 20px;
   padding-right: 20px;
