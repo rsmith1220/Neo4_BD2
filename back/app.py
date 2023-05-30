@@ -1,34 +1,48 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, g, jsonify, render_template, request, redirect, url_for, flash
+from flask_cors import CORS
 from pymongo import MongoClient, InsertOne
 from bson.objectid import ObjectId
 import json
+from neo4j import GraphDatabase
+from neo4j.exceptions import Neo4jError
 
 app = Flask(__name__)
-app.secret_key = "llave_secreta"
+CORS(app)
 
-client = MongoClient(
-    f"mongodb+srv://admin:123@cluster0.jholt4h.mongodb.net/?retryWrites=true&w=majority",
-    socketTimeoutMS=30000,
-)
-
-try:
-    # Checquear la conexion a la base de datos
-    print(client.list_database_names())
-except Exception as e:
-    print("Error connecting to the database:", e)
-
-db = client.get_database("moviesDB")
-movies = db["movies"]
-series = db["series"]
-episodes = db["episodes"]
+NEO4J_URI = 'neo4j+s://6e27ab82.databases.neo4j.io'
+NEO4J_USERNAME = 'neo4j'
+NEO4J_PASSWORD = 'yanRaZc9FOZQsteuES2-g9F4lJ7X2bJIyU_c1FmSWN0'
+# AURA_INSTANCEID=6e27ab82
+# AURA_INSTANCENAME=Instance01
 
 
-@app.route("/pelicula/<id>")
-def pelicula(id):
-    movies = db.movies
-    movieData = movies.find_one({"_id": ObjectId(id)})
+def get_neo4j_driver():
+    if 'neo4j_driver' not in g:
+        g.neo4j_driver = GraphDatabase.driver(
+            NEO4J_URI, auth=(NEO4J_USERNAME, NEO4J_PASSWORD)
+        )
+    return g.neo4j_driver
 
-    return render_template(
-        "pelicula_select.html",
-        movieData=movieData,
-    )
+
+def get_neo4j_session():
+    if 'neo4j_session' not in g:
+        g.neo4j_session = get_neo4j_driver().session()
+    return g.neo4j_session
+
+
+@app.before_request
+def before_request():
+    g.neo4j_driver = get_neo4j_driver()
+    g.neo4j_session = get_neo4j_session()
+
+
+@app.route('/nodes')
+def get_nodes():
+    session = get_neo4j_session()
+    result = session.run('MATCH (n) RETURN n')
+    nodes = [dict(record['n']) for record in result]
+    return jsonify(nodes)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
