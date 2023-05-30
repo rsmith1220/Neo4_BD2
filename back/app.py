@@ -9,11 +9,9 @@ from neo4j.exceptions import Neo4jError
 app = Flask(__name__)
 CORS(app)
 
-NEO4J_URI = 'neo4j+s://6e27ab82.databases.neo4j.io'
+NEO4J_URI = 'neo4j+s://e7b09531.databases.neo4j.io'
 NEO4J_USERNAME = 'neo4j'
-NEO4J_PASSWORD = 'yanRaZc9FOZQsteuES2-g9F4lJ7X2bJIyU_c1FmSWN0'
-# AURA_INSTANCEID=6e27ab82
-# AURA_INSTANCENAME=Instance01
+NEO4J_PASSWORD = 'R89j_ihUVF5Y9DzIi-aQ1cbEasgLiOvhudaHztXHtfM'
 
 
 def get_neo4j_driver():
