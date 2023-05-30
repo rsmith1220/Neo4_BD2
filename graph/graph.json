@@ -1,0 +1,1557 @@
+	
+[
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 0,
+            "high": 0
+          },
+          "labels": [
+            "Warehouse"
+          ],
+          "properties": {
+            "Address": "123 Main Street, City A, Country X",
+            "Capacity": "100000",
+            "Certificated": "True",
+            "Name": "GlobalHub Warehouse",
+            "Temperature_Control": "True"
+          },
+          "elementId": "0"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 1,
+            "high": 0
+          },
+          "labels": [
+            "Supplier"
+          ],
+          "properties": {
+            "Phone_number": "+1-987-654-3210",
+            "Address": "456 Dragon Street, Wyvern City, Fantasy Realm",
+            "Representatives": [
+              "Eleanor Smith",
+              "Michael Williams",
+              "Patricia Brown"
+            ],
+            "CEO": "Victoria Smith",
+            "Name": "Dragons Lair Books"
+          },
+          "elementId": "1"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 2,
+            "high": 0
+          },
+          "labels": [
+            "Customer"
+          ],
+          "properties": {
+            "Phone_number": "+6-246-135-7902",
+            "Address": "Notts House, Nicodranas, Wildemount",
+            "Adult": "True",
+            "EMail": "jestermail@gmail.com",
+            "Name": "Jester Lavorre"
+          },
+          "elementId": "2"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 3,
+            "high": 0
+          },
+          "labels": [
+            "Retailer"
+          ],
+          "properties": {
+            "Phone_number": "+1-123-456-7890",
+            "Address": "456 Main Street, City B, Country X",
+            "Representatives": [
+              "Emily Johnson",
+              "James Anderson"
+            ],
+            "Payment_Methods": [
+              "Credit Card",
+              "PayPal",
+              "Cash"
+            ],
+            "Name": "Book Haven"
+          },
+          "elementId": "3"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 4,
+            "high": 0
+          },
+          "labels": [
+            "Book"
+          ],
+          "properties": {
+            "ISBN": "978-1-737-37251-6",
+            "Release_Date": "2023-05-15",
+            "Title": "The Chronicles of Exandria Vol I: The Tale of Vox Machina",
+            "Author": "Darcy Ross",
+            "Content_Warning": [
+              "Violence"
+            ]
+          },
+          "elementId": "4"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 5,
+            "high": 0
+          },
+          "labels": [
+            "Retailer"
+          ],
+          "properties": {
+            "Phone_number": "+502-1234-5678",
+            "Address": "Fontabella, Guatemala City, Guatemala",
+            "Representatives": [
+              "Juan Perez",
+              "Maria Lopez"
+            ],
+            "Payment_Methods": [
+              "Credit Card",
+              "Cash"
+            ],
+            "Name": "Sophos"
+          },
+          "elementId": "5"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 6,
+            "high": 0
+          },
+          "labels": [
+            "Retailer"
+          ],
+          "properties": {
+            "Phone_number": "+502-9876-5432",
+            "Address": "Majadas Once, Guatemala City, Guatemala",
+            "Representatives": [
+              "Carlos Gonzalez",
+              "Ana Ramirez"
+            ],
+            "Payment_Methods": [
+              "Credit Card",
+              "Cash"
+            ],
+            "Name": "Artemis"
+          },
+          "elementId": "6"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 7,
+            "high": 0
+          },
+          "labels": [
+            "Retailer"
+          ],
+          "properties": {
+            "Phone_number": "+502-2468-1357",
+            "Address": "Oakland Mall, Guatemala City, Guatemala",
+            "Representatives": [
+              "Luis Hernandez",
+              "Sofia Perez"
+            ],
+            "Payment_Methods": [
+              "Credit Card",
+              "Cash"
+            ],
+            "Name": "Beholders Eye"
+          },
+          "elementId": "7"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 8,
+            "high": 0
+          },
+          "labels": [
+            "Retailer"
+          ],
+          "properties": {
+            "Phone_number": "+1-999-888-7777",
+            "Address": "Lincoln Heights, Los Angeles, California, USA",
+            "Representatives": [
+              "Ashley Johnson",
+              "Taliesin Jaffe"
+            ],
+            "Payment_Methods": [
+              "Credit Card",
+              "PayPal",
+              "Cash",
+              "Apple Pay",
+              "Google Pay"
+            ],
+            "Name": "Thursday Night Games"
+          },
+          "elementId": "8"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 9,
+            "high": 0
+          },
+          "labels": [
+            "Customer"
+          ],
+          "properties": {
+            "Phone_number": "+6-246-135-7902",
+            "Address": "Notts House, Nicodranas, Wildemount",
+            "Adult": "True",
+            "EMail": "frumpkin@gmail.com",
+            "Name": "Caleb Widogast"
+          },
+          "elementId": "9"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 10,
+            "high": 0
+          },
+          "labels": [
+            "Customer"
+          ],
+          "properties": {
+            "Phone_number": "+46-123-456-7890",
+            "Address": "Millennium, Stockholm, Sweden",
+            "Adult": "True",
+            "EMail": "kalleblomkvist@hotmail.com",
+            "Name": "Mikael Blomkvist"
+          },
+          "elementId": "10"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 11,
+            "high": 0
+          },
+          "labels": [
+            "Customer"
+          ],
+          "properties": {
+            "Phone_number": "+44-123-456-7890",
+            "Address": "7 Piccadilly Circus, London, England",
+            "Adult": "True",
+            "EMail": "notwinona@gmail.com",
+            "Name": "Mina Murray"
+          },
+          "elementId": "11"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 12,
+            "high": 0
+          },
+          "labels": [
+            "Customer"
+          ],
+          "properties": {
+            "Phone_number": "+43-123-456-7890",
+            "Address": "Karnstein Castle, Styria, Austria",
+            "Adult": "False",
+            "EMail": "notmircalla@hotmail.com",
+            "Name": "Carmilla Karnstein"
+          },
+          "elementId": "12"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 13,
+            "high": 0
+          },
+          "labels": [
+            "Customer"
+          ],
+          "properties": {
+            "Phone_number": "+56-123-456-7890",
+            "Address": "Castle Whitestone, TalDorei, Exandria",
+            "Adult": "False",
+            "EMail": "cassderolo@gmail.com",
+            "Name": "Cassandra Johanna von Musel Klossowski de Rolo"
+          },
+          "elementId": "13"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 14,
+            "high": 0
+          },
+          "labels": [
+            "Customer"
+          ],
+          "properties": {
+            "Phone_number": "+46-987-654-3210",
+            "Address": "Lundagatan 38, Stockholm, Sweden",
+            "Adult": "True",
+            "EMail": "wasp@gmail.com",
+            "Name": "Lisbeth Salander"
+          },
+          "elementId": "14"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 15,
+            "high": 0
+          },
+          "labels": [
+            "Customer"
+          ],
+          "properties": {
+            "Phone_number": "+1-987-654-3210",
+            "Address": "Ludlow, Maine, USA",
+            "Adult": "False",
+            "EMail": "deadisbetter@gmail.com",
+            "Name": "Gage Creed"
+          },
+          "elementId": "15"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 16,
+            "high": 0
+          },
+          "labels": [
+            "Book"
+          ],
+          "properties": {
+            "ISBN": "978-1-123-45678-9",
+            "Release_Date": "2018-04-01",
+            "Author": "Taryon Darrington",
+            "Title": "Tusk Love",
+            "Content_Warning": [
+              "Sexual Content"
+            ]
+          },
+          "elementId": "16"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 17,
+            "high": 0
+          },
+          "labels": [
+            "Book"
+          ],
+          "properties": {
+            "ISBN": "978-1-59308-102-9",
+            "Release_Date": "1811-04-01",
+            "Author": "Jane Austen",
+            "Title": "Sense and Sensibility",
+            "Content_Warning": []
+          },
+          "elementId": "17"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 18,
+            "high": 0
+          },
+          "labels": [
+            "Book"
+          ],
+          "properties": {
+            "ISBN": "978-1-59308-102-9",
+            "Release_Date": "1902-04-01",
+            "Author": "Sir Arthur Conan Doyle",
+            "Title": "The Hound of the Baskervilles",
+            "Content_Warning": []
+          },
+          "elementId": "18"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 19,
+            "high": 0
+          },
+          "labels": [
+            "Book"
+          ],
+          "properties": {
+            "ISBN": "978-0-307-74155-8",
+            "Release_Date": "1975-10-17",
+            "Title": "Salems Lot",
+            "Author": "Stephen King",
+            "Content_Warning": [
+              "Violence",
+              "Gore"
+            ]
+          },
+          "elementId": "19"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 20,
+            "high": 0
+          },
+          "labels": [
+            "Book"
+          ],
+          "properties": {
+            "ISBN": "978-1-63215-685-3",
+            "Release_Date": "2016-04-20",
+            "Author": "Skottie Young",
+            "Title": "I Hate Fairyland",
+            "Content_Warning": [
+              "Violence",
+              "Gore"
+            ]
+          },
+          "elementId": "20"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 21,
+            "high": 0
+          },
+          "labels": [
+            "Book"
+          ],
+          "properties": {
+            "ISBN": "978-0-7869-6578-6",
+            "Release_Date": "2016-03-15",
+            "Author": "Christopher Perkins",
+            "Title": "Curse of Strahd",
+            "Content_Warning": [
+              "Violence",
+              "Sexual Content"
+            ]
+          },
+          "elementId": "21"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 22,
+            "high": 0
+          },
+          "labels": [
+            "Book"
+          ],
+          "properties": {
+            "ISBN": "978-1-4231-6097-4",
+            "Release_Date": "2015-10-06",
+            "Title": "Magnus Chase and the Gods of Asgard: The Sword of Summer",
+            "Author": "Rick Riordan",
+            "Content_Warning": [
+              "Violence"
+            ]
+          },
+          "elementId": "22"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 23,
+            "high": 0
+          },
+          "labels": [
+            "Book"
+          ],
+          "properties": {
+            "ISBN": "978-0-307-26975-1",
+            "Release_Date": "2005-08-01",
+            "Author": "Stieg Larsson",
+            "Title": "Män som hatar kvinnor",
+            "Content_Warning": [
+              "Sexual Content",
+              "Violence",
+              "Gore"
+            ]
+          },
+          "elementId": "23"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 24,
+            "high": 0
+          },
+          "labels": [
+            "Book"
+          ],
+          "properties": {
+            "ISBN": "978-1-234-56789-0",
+            "Release_Date": "2018-04-01",
+            "Author": "Zagig Yragerne",
+            "Title": "The Book of Vile Darkness",
+            "Content_Warning": [
+              "Sexual Content",
+              "Violence",
+              "Gore"
+            ]
+          },
+          "elementId": "24"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 25,
+            "high": 0
+          },
+          "labels": [
+            "Book"
+          ],
+          "properties": {
+            "ISBN": "978-1-234-56789-0",
+            "Release_Date": "2018-04-01",
+            "Author": "Zagig Yragerne",
+            "Title": "The Book of Exalted Deeds",
+            "Content_Warning": [
+              "Sexual Content",
+              "Violence",
+              "Gore"
+            ]
+          },
+          "elementId": "25"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 26,
+            "high": 0
+          },
+          "labels": [
+            "Book"
+          ],
+          "properties": {
+            "ISBN": "978-0-575-07065-2",
+            "Release_Date": "1967-03-01",
+            "Author": "Harlan Ellison",
+            "Title": "I have no mouth and I must scream",
+            "Content_Warning": [
+              "Violence",
+              "Gore"
+            ]
+          },
+          "elementId": "26"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 27,
+            "high": 0
+          },
+          "labels": [
+            "Book"
+          ],
+          "properties": {
+            "ISBN": "978-0-345-35281-7",
+            "Release_Date": "1928-02-01",
+            "Author": "H. P. Lovecraft",
+            "Title": "The Call of Cthulhu",
+            "Content_Warning": [
+              "Violence",
+              "Gore"
+            ]
+          },
+          "elementId": "27"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 28,
+            "high": 0
+          },
+          "labels": [
+            "Book"
+          ],
+          "properties": {
+            "ISBN": "978-0-345-35281-7",
+            "Release_Date": "1927-09-01",
+            "Author": "H. P. Lovecraft",
+            "Title": "The Colour Out of Space",
+            "Content_Warning": [
+              "Violence",
+              "Gore"
+            ]
+          },
+          "elementId": "28"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 29,
+            "high": 0
+          },
+          "labels": [
+            "Book"
+          ],
+          "properties": {
+            "ISBN": "978-0-14-143984-6",
+            "Release_Date": "1897-05-26",
+            "Title": "Dracula",
+            "Author": "Bram Stoker",
+            "Content_Warning": [
+              "Violence",
+              "Gore"
+            ]
+          },
+          "elementId": "29"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 30,
+            "high": 0
+          },
+          "labels": [
+            "Supplier"
+          ],
+          "properties": {
+            "Phone_number": "+1-666-666-6666",
+            "Address": "666 Hell Street, City G, Country Z",
+            "Representatives": [
+              "Joe Manganiello",
+              "Deborah Ann Woll"
+            ],
+            "CEO": "Gary Gygax",
+            "Name": "Vecna Publishing"
+          },
+          "elementId": "30"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 31,
+            "high": 0
+          },
+          "labels": [
+            "Supplier"
+          ],
+          "properties": {
+            "Phone_number": "+1-555-555-5555",
+            "Address": "555 Heaven Street, City H, Country Z",
+            "Representatives": [
+              "Laura Bailey",
+              "Mary Elizabeth McGlynn",
+              "Brian Wayne Foster"
+            ],
+            "CEO": "Brennan Lee Mulligan",
+            "Name": "Tiamat Publishing"
+          },
+          "elementId": "31"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 32,
+            "high": 0
+          },
+          "labels": [
+            "Warehouse"
+          ],
+          "properties": {
+            "Address": "456 Main Street, City B, Country Y",
+            "Capacity": "150000",
+            "Certificated": "False",
+            "Name": "SecureStorage Warehouse",
+            "Temperature_Control": "True"
+          },
+          "elementId": "32"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 33,
+            "high": 0
+          },
+          "labels": [
+            "Warehouse"
+          ],
+          "properties": {
+            "Address": "789 Oak Road, City C, Country Z",
+            "Capacity": "80000",
+            "Certificated": "True",
+            "Temperature_Control": "False",
+            "Name": "PrimeStore Warehouse"
+          },
+          "elementId": "33"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 34,
+            "high": 0
+          },
+          "labels": [
+            "Supplier",
+            "Warehouse"
+          ],
+          "properties": {
+            "Phone_number": "+1-333-444-5555",
+            "Address": "654 Maple Street, City E, Country Y",
+            "Capacity": "75000",
+            "Certificated": "True",
+            "Representatives": [
+              "John Doe",
+              "Jane Doe"
+            ],
+            "CEO": "Jessica Roberts",
+            "Name": "Bestseller Publishers",
+            "Temperature_Control": "True"
+          },
+          "elementId": "34"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 35,
+            "high": 0
+          },
+          "labels": [
+            "Supplier",
+            "Warehouse"
+          ],
+          "properties": {
+            "Phone_number": "+1-777-888-9999",
+            "Address": "987 Pine Lane, City D, Country X",
+            "Capacity": "95000",
+            "Certificated": "True",
+            "Representatives": [
+              "Robert Johnson",
+              "Michelle Garcia"
+            ],
+            "CEO": "William Adams",
+            "Name": "Global Books Inc.",
+            "Temperature_Control": "True"
+          },
+          "elementId": "35"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 36,
+            "high": 0
+          },
+          "labels": [
+            "Supplier",
+            "Warehouse"
+          ],
+          "properties": {
+            "Phone_number": "+1-111-222-3333",
+            "Address": "321 Elm Street, City F, Country Z",
+            "Capacity": "50000",
+            "Certificated": "True",
+            "Representatives": [
+              "Marisha Ray",
+              "Matthew Mercer"
+            ],
+            "CEO": "Travis Willingham",
+            "Name": "Darrington Press",
+            "Temperature_Control": "True"
+          },
+          "elementId": "36"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 37,
+            "high": 0
+          },
+          "labels": [
+            "Supplier"
+          ],
+          "properties": {
+            "Phone_number": "+1-222-333-4444",
+            "Address": "123 Oak Street, City A, Country X",
+            "Representatives": [
+              "Mike Mignola",
+              "Scott Allie"
+            ],
+            "CEO": "Mike Richardson",
+            "Name": "Dark Horse Comics"
+          },
+          "elementId": "37"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 38,
+            "high": 0
+          },
+          "labels": [
+            "Retailer"
+          ],
+          "properties": {
+            "Phone_number": "+317-742-7009",
+            "Address": "2539 Perry Crossing Way. Ste 110. Plainfield, IN 46168",
+            "Representatives": "Jeffrey Albertson,Kumiko Albertson ",
+            "Payment_Methods": [
+              "Credit Card",
+              "Cash"
+            ],
+            "Name": "The Androids Dungeon"
+          },
+          "elementId": "38"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 39,
+            "high": 0
+          },
+          "labels": [
+            "Supplier"
+          ],
+          "properties": {
+            "Phone_number": "+1-616-555-5555",
+            "Address": "456 Main Street, City B, Country Y",
+            "Representatives": [
+              "Stan Lee",
+              "Joe Quesada"
+            ],
+            "CEO": "Isaac Perlmutter",
+            "Name": "Marvel Comics"
+          },
+          "elementId": "39"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 40,
+            "high": 0
+          },
+          "labels": [
+            "Supplier"
+          ],
+          "properties": {
+            "Phone_number": "+1-202-555-5555",
+            "Address": "789 Oak Road, City C, Country Z",
+            "Representatives": [
+              "Bob Kane",
+              "Jim Lee"
+            ],
+            "CEO": "Jim Lee",
+            "Name": "DC Comics"
+          },
+          "elementId": "40"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 41,
+            "high": 0
+          },
+          "labels": [
+            "Supplier"
+          ],
+          "properties": {
+            "Phone_number": "+1-510-652-2600",
+            "Address": "654 Maple Street, City E, Country Y",
+            "Representatives": [
+              "Todd McFarlane",
+              "Erik Larsen"
+            ],
+            "CEO": "Eric Stephenson",
+            "Name": "Image Comics"
+          },
+          "elementId": "41"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 42,
+            "high": 0
+          },
+          "labels": [
+            "Warehouse"
+          ],
+          "properties": {
+            "Address": "987 Pine Lane, City D, Country X",
+            "Capacity": "95000",
+            "Certificated": "True",
+            "Name": "Arasaka Warehouse",
+            "Temperature_Control": "True"
+          },
+          "elementId": "42"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 43,
+            "high": 0
+          },
+          "labels": [
+            "Warehouse"
+          ],
+          "properties": {
+            "Address": "321 Elm Street, City F, Country Z",
+            "Capacity": "50000",
+            "Certificated": "True",
+            "Name": "Kruegers Storage",
+            "Temperature_Control": "True"
+          },
+          "elementId": "43"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 44,
+            "high": 0
+          },
+          "labels": [
+            "Warehouse"
+          ],
+          "properties": {
+            "Address": "123 Oak Street, City A, Country X",
+            "Capacity": "50000",
+            "Certificated": "True",
+            "Name": "The Warehouse",
+            "Temperature_Control": "True"
+          },
+          "elementId": "44"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 45,
+            "high": 0
+          },
+          "labels": [
+            "Customer"
+          ],
+          "properties": {
+            "Phone_number": "+1-654-321-0987",
+            "Email": "dreamwarrior@gmail.com",
+            "Address": "1428 Elm Street, Springwood, Ohio",
+            "Adult": "False",
+            "Name": "Nancy Thompson"
+          },
+          "elementId": "45"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 46,
+            "high": 0
+          },
+          "labels": [
+            "Customer"
+          ],
+          "properties": {
+            "Phone_number": "+1-123-456-7890",
+            "Email": "americanNightmare@gmail.com",
+            "Address": "1428 Elm Street, Springwood, Ohio",
+            "Adult": "True",
+            "Name": "Freddy Krueger"
+          },
+          "elementId": "46"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 47,
+            "high": 0
+          },
+          "labels": [
+            "Customer"
+          ],
+          "properties": {
+            "Phone_number": "+1-987-654-3210",
+            "Email": "mommysboy@gmail.com",
+            "Address": "Camp Crystal Lake, New Jersey",
+            "Adult": "True",
+            "Name": "Jason Voorhees"
+          },
+          "elementId": "47"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 48,
+            "high": 0
+          },
+          "labels": [
+            "Customer"
+          ],
+          "properties": {
+            "Phone_number": "+1-456-789-1230",
+            "Email": "boogeyman@gmail.com",
+            "Address": "45 Lampkin Lane, Haddonfield, Illinois",
+            "Adult": "True",
+            "Name": "Michael Myers"
+          },
+          "elementId": "48"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 49,
+            "high": 0
+          },
+          "labels": [
+            "Customer"
+          ],
+          "properties": {
+            "Phone_number": "+1-789-123-4560",
+            "Email": "finalGirl@gmail.com",
+            "Address": "45 Lampkin Lane, Haddonfield, Illinois",
+            "Adult": "False",
+            "Name": "Laurie Strode"
+          },
+          "elementId": "49"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    },
+    {
+      "keys": [
+        "n"
+      ],
+      "length": 1,
+      "_fields": [
+        {
+          "identity": {
+            "low": 50,
+            "high": 0
+          },
+          "labels": [
+            "Retailer"
+          ],
+          "properties": {
+            "Phone_number": "+1-654-321-0987",
+            "Address": "1428 Elm Street, Springwood, Ohio",
+            "Representatives": [
+              "Nancy Thompson",
+              "Freddy Krueger"
+            ],
+            "Payment_Methods": [
+              "Credit Card",
+              "Cash"
+            ],
+            "Name": "The House of Horror"
+          },
+          "elementId": "50"
+        }
+      ],
+      "_fieldLookup": {
+        "n": 0
+      }
+    }
+  ]

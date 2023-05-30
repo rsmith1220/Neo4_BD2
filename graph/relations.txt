@@ -1,0 +1,20 @@
+# licensed by relationship goes from a book to a supplier
+    # start date, end date, exclusive
+# purchased relationship goes from a customer to a book
+    # purchase date, amount, store
+# request relationship goes from a customer to a retailer
+    # amount, request date, isbn
+# owns relationship goes from a supplier to a retailer
+    # percentage owned, invested amount, decision authority
+# supplies relationship goes from a supplier to a warehouse
+    # supply start, supply end, supply frequency
+# stored in relationship goes from a book to a warehouse
+    # quantity, arrive date, handling type
+# has relationship goes from a retailer to a book
+    # amount, price, available
+# order relationship goes from a retailer to a warehouse
+    # id, isbn, amount
+# shipment relationship goes from a warehouse to a retailer
+    # id, arrival date, order id
+# owned by relationship goes from a warehouse to a supplier
+    # percentage owned, invested amount, exclusive
