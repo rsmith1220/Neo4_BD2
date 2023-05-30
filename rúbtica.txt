@@ -1,0 +1,39 @@
+Modelo de Datos
+- Definición de nodos con labels y propiedades - 5
+- Definición de tipos de relaciones con propiedades - 5
+- Cumple con la implementación de todos los tipos de datos especificados para las propiedades: - 5
+    - String
+    - Number
+    - Date/Datetime
+    - List/Array
+    - Boolean
+
+
+Set de datos
+- Carga de datos desde CSV - 5
+- Datos previamenete cargados en Neo4j - 2
+- Cantidad de nodos mínima - 2
+- El grafo es conexo - 1
+
+Temática
+- Implementa el modelo de datos para alguna de las temáticas indicadas - 5
+
+Frontend / Backend
+- Creación de nodos con 1 label - 5
+- Creación de nodos con 2 o mas labels - 5
+- Creación de nodos con propiedades - 5
+- Visualización de nodos - 5
+- Actualización de labels/propiedades de nodos - 5
+- Creación de relaciones con propiedades - 5
+- Actualización de relaciones (dirección, nodos que relaciona, propiedades) - 5
+- Eliminación de nodos - 5
+- Eliminación de relaciones - 5
+- Eliminación de propiedades de nodos - 5
+- Eliminación de propiedades de relaciones - 5
+
+Consultas Cypher
+- Cada integrante del grupo debe integrar 2 consultas de las que se solicite durante la presentación del proyecto. - 15
+
+Extras
+- Implementación de un algoritmo de los vistos en clase - 10
+- Interfaz excepcional	- 5
