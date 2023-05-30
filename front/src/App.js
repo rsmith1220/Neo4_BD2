@@ -1,33 +1,28 @@
+import { render } from "react-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import React from 'react';
+import { BrowserRouter, Routes, Route} from "react-router-dom"
+import { Home, Page2 } from './paginas';
+
+const rootElement = document.getElementById("root");
+const NotFound = () => <h1>404: Page Not Found</h1>;
 
 function App() {
-  return (
-    <div className="app">
-      <header>
+  render(
+    
+    <BrowserRouter>
+      <Routes>
+        {/* Pagina principal */}
+        <Route path="/" element={<Home />} />
+        <Route path="/buyer" element={<Page2 />} />
         
-        <p className='titulo-principal'>
-          Contenedor de libros punto com
-        </p>
-      </header>
-    <div className = 'buscador'>
-      <p>Nombre del libro</p>
-      <input>
-      </input>
-    </div>
-    
-<div className='contiene'>
-  <p className='infor'>El libro esta en WAREHOUSE</p>
-
-    <p className='infor'>El supplier es SUPPLIER</p>
-
-    <p className='infor'>Se puede encontrar en RETAILERS</p>
-
-    <p className='infor'>Ha sido comprado por CUSTOMERS</p>
-
-</div>
-    
-    </div>
+      </Routes>
+    </BrowserRouter>,
+  rootElement
   );
+  
+  
 }
 
 export default App;
