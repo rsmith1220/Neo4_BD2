@@ -1,6 +1,10 @@
 ## BACK
 pip install neo4j 
 pip install flask
+cd back
+python app.py
 
-temp password
-yanRaZc9FOZQsteuES2-g9F4lJ7X2bJIyU_c1FmSWN0
+## FRONT
+cd front
+npm install
+npm run start
