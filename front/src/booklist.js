@@ -49,6 +49,33 @@ function Booksa() {
     );
   };
 
+  const NodeAddress = ({ node }) => {
+    const { CEO,Address,Author,Name } = node.node;
+  
+    return (
+      <li>
+        <div>
+          <strong>CEO:</strong> {CEO}
+        </div>
+        <div>
+          <strong>Address:</strong> {Address}
+        </div>
+        <div>
+          <strong>Author:</strong> {Author}
+        </div>
+        
+        <div>
+          <strong>Name:</strong> {Name}
+        </div>
+      </li>
+    );
+  };
+  const [activeTab, setActiveTab] = useState("authors");
+
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+  };
+
   return (
     <div className="app">
       <header>
@@ -68,11 +95,50 @@ function Booksa() {
         
     </button></Link>
 
-    <ul className='infobooks'>
+    <div>
+      {/* Tab buttons */}
+      <div>
+        <button
+          onClick={() => handleTabClick("authors")}
+          className={activeTab === "authors" ? "active" : ""}
+        >
+          Authors and Books
+        </button>
+        <button
+          onClick={() => handleTabClick("addresses")}
+          className={activeTab === "addresses" ? "active" : ""}
+        >
+          Addresses
+        </button>
+      </div>
+
+      {/* Content based on active tab */}
+      {activeTab === "authors" && (
+        <div>
+          <ul className='infobooks'>
       {nodes.map((node, index) => (
         <NodeListItem key={index} node={node} />
       ))}
     </ul>
+        </div>
+      )}
+
+      {activeTab === "addresses" && (
+        <div>
+          <ul className='infobooks'>
+      {nodes.map((node, index) => (
+        <NodeAddress key={index} node={node} />
+      ))}
+    </ul>
+        </div>
+      )}
+    </div>
+
+    {/* <ul className='infobooks'>
+      {nodes.map((node, index) => (
+        <NodeListItem key={index} node={node} />
+      ))}
+    </ul> */}
     
 <div className='has'>
 
