@@ -60,7 +60,30 @@ def create_node():
     session = get_neo4j_session()
     data = request.get_json()
     query = create_node_query(data['labels'], data['properties'])
-    result = session.run(query, data['properties'])
+    result = session.run(query)
+    node = [dict(record['n']) for record in result]
+    return jsonify(node)
+
+
+def create_relationship_query(de, a, properties, relationship):
+    formatted_properties = {
+        key: f"'{value}'" if isinstance(value, str) else str(value)
+        for key, value in properties.items()
+    }
+    property_str = ", ".join(
+        f"{key}: {value}" for key, value in formatted_properties.items())
+    query = f"MATCH (a), (b) WHERE a.name = '{de}' AND b.name = '{a}' CREATE (a)-[r:{relationship} {{{property_str}}}]->(b)"
+
+    return query
+
+
+@app.route('/create_relationship', methods=['POST'])
+def create_relationship():
+    session = get_neo4j_session()
+    data = request.get_json()
+    query = create_relationship_query(
+        data['de'], data['a'], data['properties'], data['relationship'])
+    result = session.run(query)
     node = [dict(record['n']) for record in result]
     return jsonify(node)
 
