@@ -9,7 +9,7 @@ import axios from "axios";
 // NAVEGANCIA
 
 
-function Buyer() {
+function Booksa() {
 
   const [nodes, setNodes] = useState([]);
   const apiUrl = "http://127.0.0.1:5000/";
@@ -37,46 +37,23 @@ function Buyer() {
         </p>
       </header>
     <div className = 'buscador'>
-      <p>Navegando</p>
+      <p>Lista de libros</p>
 
     </div>
     <Link to='/#'><button className='cambios'>
         
-        Creation page
-        
-    </button></Link>
-    <Link to='/books'><button className='cambios'>
-        
-        Buyer page
+        Retailer page
         
     </button></Link>
     
 <div className='has'>
-<Link to='/modifier'><button className='cambios'>
-        
-    
-    Modificar un nodo
-    </button></Link>
 
-    <div>
-        <h2>Nodes</h2>
-        <ul>
-          {nodes.map((node, index) => (
-            <li key={index}>
-              <h3>{node.title}</h3>
-              <p>{node.tagline}</p>
-              <p>{node.released}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <p>Tabla de los nodos</p>
 
     
 </div>
     
-    </div>
+</div>
   );
 }
 
-export default Buyer;
+export default Booksa;

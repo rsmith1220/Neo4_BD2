@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
-import { Home, Page2, Page3 } from './paginas';
+import { Home, Page2, Page3, Page4 } from './paginas';
 
 const rootElement = document.getElementById("root");
 const NotFound = () => <h1>404: Page Not Found</h1>;
@@ -39,6 +39,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/navegar" element={<Page2 />} />
           <Route path="/modifier" element={<Page3 />} />
+          <Route path="/books" element={<Page4 />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
