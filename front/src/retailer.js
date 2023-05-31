@@ -1,6 +1,10 @@
 import './App.css';
 import { Link} from "react-router-dom";
 
+
+// PAGINA DE CREACION
+// AQUI SE CREA PARA CREAR CREACIONES
+
 function Retailer() {
   return (
     <div className="app">
@@ -11,15 +15,15 @@ function Retailer() {
         </p>
       </header>
     <div className = 'buscador'>
-      <p>Navegando</p>
+      <p>Creando</p>
     </div>
     <button className='cambios'>
         <Link to='/buyer'>
-        Create page
+        Navigation page
         </Link>
     </button>
 <div className='contiene'>
-  <p className='infor'>Aqui se esta navegando</p>
+  <p className='infor'>Aqui se esta Creando</p>
 
 </div>
     

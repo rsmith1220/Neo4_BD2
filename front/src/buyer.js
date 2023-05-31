@@ -3,6 +3,12 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+
+// PAGINA DE NAVEGACION DONDE NAVEGAMOS
+// AQUI SE NAVEGA PARA NAVEGACION
+// NAVEGANCIA
+
+
 function Buyer() {
 
   const [nodes, setNodes] = useState([]);
@@ -31,17 +37,16 @@ function Buyer() {
         </p>
       </header>
     <div className = 'buscador'>
-      <p>Creando</p>
+      <p>Navegando</p>
 
     </div>
     <button className='cambios'>
         <Link to='/#'>
-        Navigation page
+        Creation page
         </Link>
     </button>
     
 <div className='has'>
-  <p className='infor'>El libro esta en WAREHOUSE</p>
 
 
     <div>
