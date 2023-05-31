@@ -99,3 +99,6 @@ MATCH (a), (b) WHERE a.Name = 'Cassandra Johanna von Musel Klossowski de Rolo' A
 
 
 
+// Example of creating a node
+
+CREATE 

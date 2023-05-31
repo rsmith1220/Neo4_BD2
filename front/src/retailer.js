@@ -1,41 +1,52 @@
 import './App.css';
-import { Link} from "react-router-dom";
-
-
-// PAGINA DE CREACION
-// AQUI SE CREA PARA CREAR CREACIONES
+import { Link } from "react-router-dom";
 
 function Retailer() {
   return (
     <div className="app">
       <header>
-        
         <p className='titulo-principal'>
           Contenedor de libros punto com
         </p>
       </header>
-    <div className = 'buscador'>
-      <p>Creando</p>
-    </div>
-    <Link to='/navegar'><button className='cambios'>
-        
-        Navigation page
-        
-    </button></Link>
-<div className='contiene'>
-  <p className='infor'>Node label<input></input></p>
-  
 
-  <p className='infor'>Node key<input></input></p>
-  
+      <div className='sub-bar'>
+        <Link to='/navegar'>
+          <button className='sub-bar-button'>
+            Navigation Page
+          </button>
+        </Link>
+      </div>
 
-  <p className='infor'>Node value<input></input></p>
-  
-  {/* AQUI AL HACER CLICK SE CREA UN NODO */}
-    <button className='cambios'>Crear</button>
+      <div className='content_creation'>
+        <div className='buscador'>
+          <p>Creando</p>
+        </div>
 
-</div>
-    
+        <div className='contiene'>
+          <table className='create_node'>
+            <tbody>
+              <tr>
+                <td>Node label</td>
+                <td><input></input></td>
+              </tr>
+            </tbody>
+          </table>
+          <br></br>
+          <table className='create_relation'>
+            <tbody>
+              <tr>
+                <td>Relation label</td>
+                <td><input></input></td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          {/* AQUI AL HACER CLICK SE CREA UN NODO */}
+          <button className='cambios'>Crear</button>
+        </div>
+      </div>
     </div>
   );
 }
