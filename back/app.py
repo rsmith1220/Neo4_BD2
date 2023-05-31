@@ -60,10 +60,9 @@ def create_node():
     driver = get_neo4j_session()
     data = request.get_json()
     # Execute the Cypher query
-    with driver.session() as session:
-        query = create_node_query(data['labels'], data['properties'])
-        result = session.run(query)
-        node = [dict(record['n']) for record in result]
+    query = create_node_query(data['labels'], data['properties'])
+    result = driver.run(query)
+    node = [dict(record['n']) for record in result]
 
     # Close the Neo4j driver
     driver.close()
@@ -89,11 +88,10 @@ def create_relationship():
     data = request.get_json()
 
     # Execute the Cypher query
-    with driver.session() as session:
-        query = create_relationship_query(
-            data['de'], data['a'], data['properties'], data['relationship'])
-        result = session.run(query)
-        node = [dict(record['n']) for record in result]
+    query = create_relationship_query(
+        data['de'], data['a'], data['properties'], data['relationship'])
+    result = driver.run(query)
+    node = [dict(record['n']) for record in result]
 
     # Close the Neo4j driver
     driver.close()
@@ -107,19 +105,18 @@ def get_relationships_as_dictionary():
     driver = get_neo4j_session()
 
     # Execute the Cypher query
-    with driver.session() as session:
-        result = session.run(
-            "MATCH (a)-[r]->(b) RETURN a.Name AS from, type(r) AS relation, b.Name AS to")
+    result = driver.run(
+        "MATCH (a)-[r]->(b) RETURN a.Name AS from, type(r) AS relation, b.Name AS to")
 
-        # Process the query result and store it in a list of dictionaries
-        relationships = []
-        for record in result:
-            relationship = {
-                'from': record['from'],
-                'relation': record['relation'],
-                'to': record['to']
-            }
-            relationships.append(relationship)
+    # Process the query result and store it in a list of dictionaries
+    relationships = []
+    for record in result:
+        relationship = {
+            'from': record['from'],
+            'relation': record['relation'],
+            'to': record['to']
+        }
+        relationships.append(relationship)
 
     # Close the Neo4j driver
     driver.close()
@@ -151,9 +148,8 @@ def update_node_query(labels, properties, new_properties):
 def update_node(labels, properties, new_properties):
     driver = get_neo4j_session()
     # Execute the Cypher query
-    with driver.session() as session:
-        query = update_node_query(labels, properties, new_properties)
-        result = session.run(query)
+    query = update_node_query(labels, properties, new_properties)
+    result = driver.run(query)
     driver.close()
 
     return {'status': "success"}
@@ -175,9 +171,8 @@ def update_relationship_query(de, a, properties, relationship):
 def update_relationship(de, a, properties, relationship):
     driver = get_neo4j_session()
     # Execute the Cypher query
-    with driver.session() as session:
-        query = update_relationship_query(de, a, properties, relationship)
-        result = session.run(query)
+    query = update_relationship_query(de, a, properties, relationship)
+    result = driver.run(query)
     driver.close()
 
     return {'status': "success"}
@@ -202,10 +197,9 @@ def delete_node_properties_query(labels, properties, properties_to_delete):
 def delete_node_properties(labels, properties, properties_to_delete):
     driver = get_neo4j_session()
     # Execute the Cypher query
-    with driver.session() as session:
-        query = delete_node_properties_query(
-            labels, properties, properties_to_delete)
-        result = session.run(query)
+    query = delete_node_properties_query(
+        labels, properties, properties_to_delete)
+    result = driver.run(query)
     driver.close()
 
     return {'status': "success"}
@@ -224,11 +218,10 @@ def delete_relationship_properties_query(de, a, relationship, properties_to_dele
 @app.route('/delete_relationship_properties', methods=['POST'])
 def delete_relationship_properties(de, a, relationship, properties_to_delete):
     driver = get_neo4j_session()
-    # Execute the Cypher query
-    with driver.session() as session:
-        query = delete_relationship_properties_query(
-            de, a, relationship, properties_to_delete)
-        result = session.run(query)
+    # Execute the Cypher query\
+    query = delete_relationship_properties_query(
+        de, a, relationship, properties_to_delete)
+    result = driver.run(query)
     driver.close()
 
     return {'status': "success"}
@@ -244,9 +237,8 @@ def delete_relationship_query(de, a, relationship):
 def delete_relationship(de, a, relationship):
     driver = get_neo4j_session()
     # Execute the Cypher query
-    with driver.session() as session:
-        query = delete_relationship_query(de, a, relationship)
-        result = session.run(query)
+    query = delete_relationship_query(de, a, relationship)
+    result = driver.run(query)
     driver.close()
 
     return {'status': "success"}
@@ -269,9 +261,8 @@ def delete_node_query(labels, properties):
 def delete_node(labels, properties):
     driver = get_neo4j_session()
     # Execute the Cypher query
-    with driver.session() as session:
-        query = delete_node_query(labels, properties)
-        result = session.run(query)
+    query = delete_node_query(labels, properties)
+    result = driver.run(query)
     driver.close()
 
     return {'status': "success"}
