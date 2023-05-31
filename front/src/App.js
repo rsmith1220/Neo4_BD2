@@ -20,13 +20,16 @@ function App() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link className="nav-link" to="/">Home</Link>
+                <Link className="nav-link" to="/">Create</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/navegar">Browse</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/modifier">Modify</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/books">Books</Link>
               </li>
             </ul>
           </div>
