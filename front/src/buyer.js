@@ -31,21 +31,18 @@ function Buyer() {
         </p>
       </header>
     <div className = 'buscador'>
-      <p>Nombre del libro</p>
-      <input>
-      </input>
+      <p>Creando</p>
+
     </div>
     <button className='cambios'>
         <Link to='/#'>
-        
-        Retailer page
+        Navigation page
         </Link>
     </button>
     
 <div className='has'>
-    <p className='infor'>El libro esta en WAREHOUSE</p>
+  <p className='infor'>El libro esta en WAREHOUSE</p>
 
-    <p className='infor'>Se puede encontrar en RETAILERS</p>
 
     <div>
         <h2>Nodes</h2>
