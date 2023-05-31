@@ -47,7 +47,11 @@ function Buyer() {
     </button></Link>
     
 <div className='has'>
-
+<Link to='/modifier'><button className='cambios'>
+        
+    
+    Modificar un nodo
+    </button></Link>
 
     <div>
         <h2>Nodes</h2>
@@ -61,14 +65,9 @@ function Buyer() {
           ))}
         </ul>
       </div>
-</div>
+      <p>Tabla de los nodos</p>
 
-<div>
-    <button>
-        <Link to='/modifier'>
     
-    Modificar nodo
-    </Link></button>
 </div>
     
     </div>

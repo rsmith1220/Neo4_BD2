@@ -23,17 +23,16 @@ function Retailer() {
         
     </button></Link>
 <div className='contiene'>
-  <p className='infor'>Node label<input></input>
-  </p>
+  <p className='infor'>Node label<input></input></p>
   
 
-  <p className='infor'>Node key<input></input>
-  </p>
+  <p className='infor'>Node key<input></input></p>
   
 
-  <p className='infor'>Node value<input></input>
-  </p>
+  <p className='infor'>Node value<input></input></p>
   
+  {/* AQUI AL HACER CLICK SE CREA UN NODO */}
+    <button className='cambios'>Crear</button>
 
 </div>
     
