@@ -60,7 +60,6 @@ function Retailer() {
   return (
     <div className="app">
       <header>
-        
         <p className='titulo-principal'>
           Contenedor de libros punto com
         </p>
