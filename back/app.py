@@ -37,8 +37,15 @@ def before_request():
 @app.route('/nodes')
 def get_nodes():
     session = get_neo4j_session()
-    result = session.run('MATCH (n) RETURN n')
-    nodes = [dict(record['n']) for record in result]
+    result = session.run(
+        'MATCH (n)-[r]->() RETURN n, collect(DISTINCT type(r)) AS relations')
+    nodes = []
+    for record in result:
+        node = {
+            'node': dict(record['n']),
+            'relations': record['relations']
+        }
+        nodes.append(node)
     return jsonify(nodes)
 
 

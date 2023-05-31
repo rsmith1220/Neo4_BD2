@@ -22,6 +22,7 @@ function Buyer() {
     try {
       const response = await axios.get(apiUrl + "nodes");
       const nodesData = response.data;
+      console.log(nodesData);
       setNodes(nodesData);
     } catch (error) {
       console.error("Error making API request:", error);
