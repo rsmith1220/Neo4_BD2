@@ -40,11 +40,11 @@ function Buyer() {
       <p>Navegando</p>
 
     </div>
-    <button className='cambios'>
-        <Link to='/#'>
+    <Link to='/#'><button className='cambios'>
+        
         Creation page
-        </Link>
-    </button>
+        
+    </button></Link>
     
 <div className='has'>
 
@@ -61,6 +61,14 @@ function Buyer() {
           ))}
         </ul>
       </div>
+</div>
+
+<div>
+    <button>
+        <Link to='/modifier'>
+    
+    Modificar nodo
+    </Link></button>
 </div>
     
     </div>

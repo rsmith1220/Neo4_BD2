@@ -17,13 +17,23 @@ function Retailer() {
     <div className = 'buscador'>
       <p>Creando</p>
     </div>
-    <button className='cambios'>
-        <Link to='/buyer'>
+    <Link to='/navegar'><button className='cambios'>
+        
         Navigation page
-        </Link>
-    </button>
+        
+    </button></Link>
 <div className='contiene'>
-  <p className='infor'>Aqui se esta Creando</p>
+  <p className='infor'>Node label<input></input>
+  </p>
+  
+
+  <p className='infor'>Node key<input></input>
+  </p>
+  
+
+  <p className='infor'>Node value<input></input>
+  </p>
+  
 
 </div>
     

@@ -1,6 +1,7 @@
 import "./App.css"
 import Retailer from "./retailer";
 import Buyer from './buyer'
+import Modificar from "./modificador";
 import {useState, useEffect} from 'react';
 
 // El home va a ser el DDL porque es la primera pagina, la principal la importante
@@ -21,3 +22,12 @@ export const Page2 = () => {
     </div>
   );
 };
+
+export const Page3 = () => {
+  
+    return (
+      <div >
+          <Modificar/>
+      </div>
+    );
+  };
