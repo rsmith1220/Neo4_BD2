@@ -4,10 +4,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 
-// PAGINA DE NAVEGACION DONDE NAVEGAMOS
-// AQUI SE NAVEGA PARA NAVEGACION
-// NAVEGANCIA
-
 
 function Booksa() {
 
@@ -22,10 +18,35 @@ function Booksa() {
     try {
       const response = await axios.get(apiUrl + "nodes");
       const nodesData = response.data;
+      console.log(nodesData);
       setNodes(nodesData);
     } catch (error) {
       console.error("Error making API request:", error);
     }
+  };
+  const NodeListItem = ({ node }) => {
+    const { Author, Content_Warning, ISBN, Name, Release_Date } = node.node;
+  
+    return (
+      <li>
+        <div>
+          <strong>Author:</strong> {Author}
+        </div>
+        <div>
+          <strong>Content Warning:</strong>{" "}
+          {Content_Warning && Content_Warning.join(", ")}
+        </div>
+        <div>
+          <strong>ISBN:</strong> {ISBN}
+        </div>
+        <div>
+          <strong>Name:</strong> {Name}
+        </div>
+        <div>
+          <strong>Release Date:</strong> {Release_Date}
+        </div>
+      </li>
+    );
   };
 
   return (
@@ -36,6 +57,7 @@ function Booksa() {
           Contenedor de libros punto com
         </p>
       </header>
+
     <div className = 'buscador'>
       <p>Lista de libros</p>
 
@@ -45,6 +67,12 @@ function Booksa() {
         Retailer page
         
     </button></Link>
+
+    <ul className='infobooks'>
+      {nodes.map((node, index) => (
+        <NodeListItem key={index} node={node} />
+      ))}
+    </ul>
     
 <div className='has'>
 
