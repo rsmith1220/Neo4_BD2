@@ -16,6 +16,8 @@ function Retailer() {
   const [relationship, setRelationship] = useState("");
   const [relProperties, setRelProperties] = useState({});
 
+  const apiUrl = "http://127.0.0.1:5000/";
+
   const createNode = () => {
     const payload = {
       labels: [label],
@@ -25,7 +27,7 @@ function Retailer() {
     };
   
     axios
-      .post("/create_node", payload)
+      .post(apiUrl + "create_node", payload)
       .then(response => {
         // Node creation successful, handle the response if needed
         console.log(response.data);
@@ -45,7 +47,7 @@ function Retailer() {
     };
   
     axios
-      .post("/create_relationship", payload)
+      .post(apiUrl + "create_relationship", payload)
       .then(response => {
         // Relationship creation successful, handle the response if needed
         console.log(response.data);
