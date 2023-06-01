@@ -23,14 +23,17 @@ function Booksa() {
 
   const NodeListBook = ({ node }) => {
     const { Author, Content_Warning, ISBN, Name, Release_Date } = node;
+    
+    // Check if Content_Warning is an array
+    const contentWarning = Array.isArray(Content_Warning) ? Content_Warning.join(", ") : Content_Warning;
+  
     return (
       <li>
         <div>
           <strong>Author:</strong> {Author}
         </div>
         <div>
-          <strong>Content Warning:</strong>{" "}
-          {Content_Warning && Content_Warning.join(", ")}
+          <strong>Content Warning:</strong> {contentWarning}
         </div>
         <div>
           <strong>ISBN:</strong> {ISBN}
