@@ -7,11 +7,17 @@ function Retailer() {
   const [nodeLabel, setNodeLabel] = useState("");
   const [nodeProperties, setNodeProperties] = useState({});
   const [label2, setLabel2] = useState("");
+  const [nodeKey, setNodeKey] = useState("");
+  const [nodeValue, setNodeValue] = useState("");
 
   const [relationshipFrom, setRelationshipFrom] = useState("");
   const [relationshipTo, setRelationshipTo] = useState("");
   const [relationshipType, setRelationshipType] = useState("");
   const [relationshipProperties, setRelationshipProperties] = useState({});
+
+  const [relation,setRelation]=useState("")
+  const [de,setDe]=useState("")
+  const [a,setA]=useState("")
 
   const apiUrl = "http://127.0.0.1:5000/";
 
@@ -22,11 +28,6 @@ function Retailer() {
       setSelectedLabels([...selectedLabels, label]);
     }
   };
-
-  const handleRelationshipTypeSelection = (type) => {
-    setRelationshipType(type);
-  };
-
 
   const isCreateNodeButtonEnabled = () => {
     if (selectedLabels.length === 0) return false;
@@ -82,11 +83,11 @@ function Retailer() {
   const createNode = () => {
     const payload = {
       labels: selectedLabels,
-      properties: nodeProperties
+      properties: { [nodeKey]: nodeValue }
     };
-
+  
     console.log(payload);
-
+  
     axios
       .post(apiUrl + "create_node", payload)
       .then(response => {
@@ -104,7 +105,6 @@ function Retailer() {
       relationshipType !== ""
     );
   };
-
   const deleteNode = () => {
     const payload = {
       labels: [label2]
@@ -123,7 +123,25 @@ function Retailer() {
       });
   };
   
+  const deleteRelationship = () => {
+    const payload = {
+      de: [de],
+      a:[a],
+      relation:[relation]
+      
+    };
   
+    axios
+      .post(apiUrl + "delete_node", payload)
+      .then(response => {
+        // Node creation successful, handle the response if needed
+        console.log(response.data);
+      })
+      .catch(error => {
+        // Node creation failed, handle the error if needed
+        console.log(error);
+      });
+  };
 
   const createRelationship = () => {
     const payload = {
@@ -194,34 +212,33 @@ function Retailer() {
         <p>Creando</p>
       </div>
       <div className='contiene'>
-        <p>Crear Nodos</p>
         <button
           className={`sub-bar-button ${selectedLabels.includes('Retailer') ? 'active' : ''}`}
-          onClick={() => { handleLabelSelection('Retailer'); }}
+          onClick={() =>{ handleLabelSelection('Retailer'); setNodeLabel('Retailer'); }}
         >
           Retailer
         </button>
         <button
           className={`sub-bar-button ${selectedLabels.includes('Customer') ? 'active' : ''}`}
-          onClick={() => { handleLabelSelection('Customer'); }}
+          onClick={() => { handleLabelSelection('Customer'); setNodeLabel('Customer'); }}
         >
           Customer
         </button>
         <button
           className={`sub-bar-button ${selectedLabels.includes('Warehouse') ? 'active' : ''}`}
-          onClick={() => { handleLabelSelection('Warehouse'); }}
+          onClick={() => { handleLabelSelection('Warehouse'); setNodeLabel('Warehouse'); }}
         >
           Warehouse
         </button>
         <button
           className={`sub-bar-button ${selectedLabels.includes('Supplier') ? 'active' : ''}`}
-          onClick={() => { handleLabelSelection('Supplier'); }}
+          onClick={() => { handleLabelSelection('Supplier'); setNodeLabel('Supplier'); }}
         >
           Supplier
         </button>
         <button
           className={`sub-bar-button ${selectedLabels.includes('Book') ? 'active' : ''}`}
-          onClick={() => { handleLabelSelection('Book'); }}
+          onClick={() => { handleLabelSelection('Book'); setNodeLabel('Book'); }}
         >
           Book
         </button>
@@ -231,129 +248,68 @@ function Retailer() {
         >
           Delete
         </button>
-      </div>
-      <div className='contiene'>
-        <p>Crear Relaciones</p>
         <button
-          className={`sub-bar-button ${relationshipType === 'Licensed_by' ? 'active' : ''}`}
-          onClick={() => { handleRelationshipTypeSelection('Licensed_by'); }}
+          className={`sub-bar-button ${selectedLabels.includes('DeleteR') ? 'active' : ''}`}
+          onClick={() => { handleLabelSelection('DeleteR'); setNodeLabel('DeleteR'); }}
         >
-          Licensed_by
+          Delete relationship
         </button>
-        <button
-    className={`relationship-button ${relationshipType === 'Purchased' ? 'active' : ''}`}
-    onClick={() => handleRelationshipTypeSelection('Purchased')}
-  >
-    Purchased
-  </button>
-  <button
-    className={`relationship-button ${relationshipType === 'Request' ? 'active' : ''}`}
-    onClick={() => handleRelationshipTypeSelection('Request')}
-  >
-    Request
-  </button>
-  <button
-    className={`relationship-button ${relationshipType === 'Owns' ? 'active' : ''}`}
-    onClick={() => handleRelationshipTypeSelection('Owns')}
-  >
-    Owns
-  </button>
-  <button
-    className={`relationship-button ${relationshipType === 'Supplies' ? 'active' : ''}`}
-    onClick={() => handleRelationshipTypeSelection('Supplies')}
-  >
-    Supplies
-  </button>
-  <button
-    className={`relationship-button ${relationshipType === 'Stored_In' ? 'active' : ''}`}
-    onClick={() => handleRelationshipTypeSelection('Stored_In')}
-  >
-    Stored_In
-  </button>
-  <button
-    className={`relationship-button ${relationshipType === 'Has' ? 'active' : ''}`}
-    onClick={() => handleRelationshipTypeSelection('Has')}
-  >
-    Has
-  </button>
-  <button
-    className={`relationship-button ${relationshipType === 'Order' ? 'active' : ''}`}
-    onClick={() => handleRelationshipTypeSelection('Order')}
-  >
-    Order
-  </button>
-  <button
-    className={`relationship-button ${relationshipType === 'Shipment' ? 'active' : ''}`}
-    onClick={() => handleRelationshipTypeSelection('Shipment')}
-  >
-    Shipment
-  </button>
-  <button
-    className={`relationship-button ${relationshipType === 'Owned_by' ? 'active' : ''}`}
-    onClick={() => handleRelationshipTypeSelection('Owned_by')}
-  >
-    Owned_by
-  </button>
       </div>
 
       <button className='cambios' onClick={createNode} disabled={!isCreateNodeButtonEnabled()}>
         Create Node
       </button>
-
+      
       {selectedLabels.length >= 1 && (
         <div className='contiene_crear'>
           {selectedLabels[0] === "Warehouse" && (
             <>
-              <p>Warehouse</p>
-              <p className='infor'>Address <input name="Address" onChange={handleNodePropertyChange} /></p>
-              <p className='infor'>Name <input name="Name" onChange={handleNodePropertyChange} /></p>
-              <p className='infor'>Capacity <input name="Capacity" onChange={handleNodePropertyChange} /></p>
-              <p className='infor'>Certificated <input name="Certificated" onChange={handleNodePropertyChange} /></p>
-              <p className='infor'>Temperature_Control <input name="Temperature_Control" onChange={handleNodePropertyChange} /></p>
+              <p className='infor'>Address <input name="Address" onChange={e =>{ setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+              <p className='infor'>Name <input name="Name" onChange={e =>{ setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+              <p className='infor'>Capacity <input name="Capacity" onChange={e =>{ setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+              <p className='infor'>Certificated <input name="Certificated" onChange={e =>{ setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+              <p className='infor'>Temperature_Control <input name="Temperature_Control" onChange={e =>{ setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
             </>
+            
           )}
           {selectedLabels[0] === "Supplier" && (
             <>
-              <p>Supplier</p>
-              <p className='infor'>Address <input name="Address" onChange={handleNodePropertyChange} /></p>
-              <p className='infor'>CEO <input name="CEO" onChange={handleNodePropertyChange} /></p>
-              <p className='infor'>Name <input name="Name" onChange={handleNodePropertyChange} /></p>
-              <p className='infor'>Phone_number <input name="Phone_number" onChange={handleNodePropertyChange} /></p>
-              <p className='infor'>Representatives <input name="Representatives" onChange={handleNodePropertyChange} /></p>
+              <p className='infor'>Address <input name="Address" onChange={e =>{ setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+              <p className='infor'>CEO <input name="CEO" onChange={e =>{ setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+              <p className='infor'>Name <input name="Name" onChange={e =>{ setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+              <p className='infor'>Phone_number <input name="Phone_number" onChange={e =>{ setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+              <p className='infor'>Representatives <input name="Representatives" onChange={e =>{ setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
             </>
           )}
           {selectedLabels[0] === "Book" && (
             <>
-              <p>Book</p>
-              <p className='infor'>Author <input name="Author" onChange={handleNodePropertyChange} /></p>
-              <p className='infor'>Content_Warning <input name="Content_Warning" onChange={handleNodePropertyChange} /></p>
-              <p className='infor'>ISBN <input name="ISBN" onChange={handleNodePropertyChange} /></p>
-              <p className='infor'>Name <input name="Name" onChange={handleNodePropertyChange} /></p>
-              <p className='infor'>Release_Date <input name="Release_Date" onChange={handleNodePropertyChange} /></p>
-            </>
+            <p className='infor'>Author <input name="Author" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+            <p className='infor'>Content_Warning <input name="Content_Warning" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+            <p className='infor'>ISBN <input name="ISBN" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+            <p className='infor'>Name <input name="Name" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+            <p className='infor'>Release_Date <input name="Release_Date" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+          </>
           )}
-
+          
           {selectedLabels[0] === "Customer" && (
             <>
-              <p>Customer</p>
-              <p className='infor'>Address <input name="Address" onChange={handleNodePropertyChange} /></p>
-              <p className='infor'>Adult <input name="Adult" onChange={handleNodePropertyChange} /></p>
-              <p className='infor'>Email <input name="Email" onChange={handleNodePropertyChange} /></p>
-              <p className='infor'>Name <input name="Name" onChange={handleNodePropertyChange} /></p>
-              <p className='infor'>Phone_number <input name="Phone_number" onChange={handleNodePropertyChange} /></p>
-            </>
+            <p className='infor'>Address <input name="Address" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+            <p className='infor'>Adult <input name="Adult" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+            <p className='infor'>Email <input name="Email" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+            <p className='infor'>Name <input name="Name" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+            <p className='infor'>Phone_number <input name="Phone_number" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+          </>
           )}
 
           {selectedLabels[0] === "Retailer" && (
             <>
-              <p>Retailer</p>
-              <p className='infor'>Address <input name="Address" onChange={handleNodePropertyChange} /></p>
-              <p className='infor'>Name <input name="Name" onChange={handleNodePropertyChange} /></p>
-              <p className='infor'>Phone_number <input name="Phone_number" onChange={handleNodePropertyChange} /></p>
-              <p className='infor'>Representatives <input name="Representatives" onChange={handleNodePropertyChange} /></p>
-              <p className='infor'>Website <input name="Website" onChange={handleNodePropertyChange} /></p>
-            </>
-          )}
+            <p className='infor'>Address <input name="Address" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+            <p className='infor'>Name <input name="Name" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+            <p className='infor'>Phone_number <input name="Phone_number" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+            <p className='infor'>Representatives <input name="Representatives" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+            <p className='infor'>Website <input name="Website" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+          </>
+          )}  
           {selectedLabels[0] === "Delete" && (
             <>
               <div className='contiene'>
@@ -362,7 +318,21 @@ function Retailer() {
               <button className='cambios' onClick={deleteNode}>Borrar</button>
             </>
             
+          )}    
+          {selectedLabels[0] === "DeleteR" && (
+            <>
+              <div className='contiene'>
+                <p className='infor'>De <input value={de} onChange={e => setDe(e.target.value)} /></p>
+                <p className='infor'>a <input value={a} onChange={e => setA(e.target.value)} /></p>
+                <p className='infor'>Relationship <input value={relation} onChange={e => setRelation(e.target.value)} /></p>
+              </div>
+              <button className='cambios' onClick={deleteRelationship}>Borrar</button>
+            </>
+            
           )} 
+
+          
+                    
         </div>
       )}
 

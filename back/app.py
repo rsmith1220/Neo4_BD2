@@ -55,6 +55,14 @@ def get_nodes():
     return jsonify(nodes)
 
 
+@app.route('/nodes/<node_type>')
+def get_nodes_by_type(node_type):
+    session = get_neo4j_session()
+    result = session.run('MATCH (n:' + node_type + ') RETURN n')
+    nodes = [dict(record['n']) for record in result]
+    return jsonify(nodes)
+
+
 def create_node_query(labels, properties):
     labels_str = ":".join(labels)
     formatted_properties = {
@@ -240,21 +248,30 @@ def delete_relationship_properties(de, a, relationship, properties_to_delete):
     return {'status': "success"}
 
 
-def delete_relationship_query(de, a, relationship):
-    query = f"MATCH (a)-[r:{relationship}]->(b) WHERE a.name = '{de}' AND b.name = '{a}' DELETE r"
-
+def delete_relationship_query(start_node_labels, end_node_labels, relationship_type):
+    start_node_labels_str = ":".join(start_node_labels)
+    end_node_labels_str = ":".join(end_node_labels)
+    query = f"MATCH (start:{start_node_labels_str})-[rel:{relationship_type}]->(end:{end_node_labels_str}) DELETE rel"
     return query
 
-
 @app.route('/delete_relationship', methods=['POST'])
-def delete_relationship(de, a, relationship):
+def delete_relationship():
+    data = request.get_json()  # Retrieve the JSON payload from the request
     driver = get_neo4j_session()
-    # Execute the Cypher query
-    query = delete_relationship_query(de, a, relationship)
-    result = driver.run(query)
-    driver.close()
+    start_node_labels = data.get('start_node_labels', [])  # Retrieve the labels of the starting node
+    end_node_labels = data.get('end_node_labels', [])  # Retrieve the labels of the ending node
+    relationship_type = data.get('relationship_type')  # Retrieve the type of the relationship
 
-    return {'status': "success"}
+    try:
+        # Rest of your code for constructing the query and executing it
+        query = delete_relationship_query(start_node_labels, end_node_labels, relationship_type)
+        result = driver.run(query)
+        # Successful deletion
+        return {'status': 'success'}
+    except Exception as e:
+        # Error occurred, handle the exception
+        return {'status': 'error', 'message': str(e)}
+
 
 
 def delete_node_query(labels):
