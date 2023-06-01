@@ -6,6 +6,7 @@ function Retailer() {
   const [selectedLabels, setSelectedLabels] = useState([]);
   const [nodeLabel, setNodeLabel] = useState("");
   const [nodeKey, setNodeKey] = useState("");
+  const [label2, setLabel2] = useState("");
   const [nodeValue, setNodeValue] = useState("");
 
   const [relationshipFrom, setRelationshipFrom] = useState("");
@@ -178,6 +179,12 @@ function Retailer() {
         >
           Book
         </button>
+        <button
+          className={`sub-bar-button ${selectedLabels.includes('Delete') ? 'active' : ''}`}
+          onClick={() => { handleLabelSelection('Delete'); setNodeLabel('Delete'); }}
+        >
+          Delete
+        </button>
       </div>
 
       <button className='cambios' onClick={createNode} disabled={!isCreateNodeButtonEnabled()}>
@@ -233,7 +240,19 @@ function Retailer() {
             <p className='infor'>Representatives <input name="Representatives" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
             <p className='infor'>Website <input name="Website" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
           </>
-          )}                    
+          )}  
+          {selectedLabels[0] === "Delete" && (
+            <>
+              <div className='contiene'>
+                <p className='infor'>Node label <input value={label2} onChange={e => setLabel2(e.target.value)} /></p>
+              </div>
+              <button className='cambios' onClick={deleteNode}>Borrar</button>
+            </>
+            
+          )}    
+
+          
+                    
         </div>
       )}
 
