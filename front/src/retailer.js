@@ -373,9 +373,9 @@ function Retailer() {
               </div>
               <button className='cambios' onClick={deleteNode}>Borrar</button>
               <div className='contiene'>
-                <p className='infor'>Label<input value={label2} onChange={e => setLabelPropiedadNodo1(e.target.value)} /></p>
-                <p className='infor'>Propiedad<input value={label2} onChange={e => setLabelPropiedadNodo2(e.target.value)} /></p>
-                <p className='infor'>Propiedad a eliminar<input value={label2} onChange={e => setLabelPropiedadNodo3(e.target.value)} /></p>
+                <p className='infor'>Label<input value={labelPropiedadNodo1} onChange={e => setLabelPropiedadNodo1(e.target.value)} /></p>
+                <p className='infor'>Propiedad<input value={labelPropiedadNodo2} onChange={e => setLabelPropiedadNodo2(e.target.value)} /></p>
+                <p className='infor'>Propiedad a eliminar<input value={labelPropiedadNodo3} onChange={e => setLabelPropiedadNodo3(e.target.value)} /></p>
               </div>
               <button className='cambios' onClick={deleteNodePropiedad}>Borrar</button>
             </>
