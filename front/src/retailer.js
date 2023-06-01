@@ -15,6 +15,12 @@ function Retailer() {
   const [relationshipType, setRelationshipType] = useState("");
   const [relationshipProperties, setRelationshipProperties] = useState({});
 
+  const [relation,setRelation]=useState("")
+  const [de,setDe]=useState("")
+  const [a,setA]=useState("")
+
+
+
   const apiUrl = "http://127.0.0.1:5000/";
 
   const handleLabelSelection = (label) => {
@@ -117,9 +123,29 @@ function Retailer() {
         // Node creation failed, handle the error if needed
         console.log(error);
       });
+      
   };
   
+  const deleteRelationship = () => {
+    const payload = {
+      de: [de],
+      a:[a],
+      relation: [relation]
+      
+    };
   
+    axios
+      .post(apiUrl + "delete_node", payload)
+      .then(response => {
+        // Node creation successful, handle the response if needed
+        console.log(response.data);
+      })
+      .catch(error => {
+        // Node creation failed, handle the error if needed
+        console.log(error);
+      });
+      
+  };
 
   const createRelationship = () => {
     const payload = {
@@ -192,7 +218,14 @@ function Retailer() {
           className={`sub-bar-button ${selectedLabels.includes('Delete') ? 'active' : ''}`}
           onClick={() => { handleLabelSelection('Delete'); setNodeLabel('Delete'); }}
         >
-          Delete
+          Delete single node
+        </button>
+
+        <button
+          className={`sub-bar-button ${selectedLabels.includes('DeleteR') ? 'active' : ''}`}
+          onClick={() => { handleLabelSelection('DeleteR'); setNodeLabel('DeleteR'); }}
+        >
+          Delete relationship
         </button>
       </div>
 
@@ -255,6 +288,17 @@ function Retailer() {
                 <p className='infor'>Node label <input value={label2} onChange={e => setLabel2(e.target.value)} /></p>
               </div>
               <button className='cambios' onClick={deleteNode}>Borrar</button>
+            </>
+            
+          )} 
+          {selectedLabels[0] === "DeleteR" && (
+            <>
+              <div className='contiene'>
+                <p className='infor'>Node relationship <input value={relation} onChange={e => setRelation(e.target.value)} /></p>
+                <p className='infor'>De <input value={de} onChange={e => setDe(e.target.value)} /></p>
+                <p className='infor'>a <input value={a} onChange={e => setA(e.target.value)} /></p>
+              </div>
+              <button className='cambios' onClick={deleteRelationship}>Borrar</button>
             </>
             
           )} 
