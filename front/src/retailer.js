@@ -8,8 +8,11 @@ import axios from "axios";
 
 function Retailer() {
   const [label, setLabel] = useState("");
+  const [label2, setLabel2] = useState("");
   const [key, setKey] = useState("");
   const [value, setValue] = useState("");
+  const [key2, setKey2] = useState("");
+  const [value2, setValue2] = useState("");
 
   const [de, setDe] = useState("");
   const [a, setA] = useState("");
@@ -57,7 +60,23 @@ function Retailer() {
         console.log(error);
       });
   };
+  const deleteNode = () => {
+    const payload = {
+      labels: [label2]
+      
+    };
   
+    axios
+      .post(apiUrl + "delete_node", payload)
+      .then(response => {
+        // Node creation successful, handle the response if needed
+        console.log(response.data);
+      })
+      .catch(error => {
+        // Node creation failed, handle the error if needed
+        console.log(error);
+      });
+  };
   
   return (
     <div className="app">
@@ -94,7 +113,17 @@ function Retailer() {
       
       {/* AQUI AL HACER CLICK SE CREEA UNA CONEXION */}
       <button className='cambios' onClick={createRelationship}>Crear</button>
+
+      <div className='contiene'>
+        <p className='infor'>Node label <input value={label2} onChange={e => setLabel2(e.target.value)} /></p>
+        {/* <p className='infor'>Node key <input value={key2} onChange={e => setKey2(e.target.value)} /></p>
+        <p className='infor'>Node value <input value={value2} onChange={e => setValue2(e.target.value)} /></p> */}
+      </div>
+      {/* AQUI AL HACER CLICK SE CREEA UNA CONEXION */}
+      <button className='cambios' onClick={deleteNode}>Borrar</button>
     </div>
+
+    
   );
 }
 

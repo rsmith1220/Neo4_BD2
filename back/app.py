@@ -5,6 +5,12 @@ from bson.objectid import ObjectId
 import json
 from neo4j import GraphDatabase
 from neo4j.exceptions import Neo4jError
+from flask import Flask
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)
+
 
 app = Flask(__name__)
 CORS(app)
@@ -251,28 +257,27 @@ def delete_relationship(de, a, relationship):
     return {'status': "success"}
 
 
-def delete_node_query(labels, properties):
+def delete_node_query(labels):
     labels_str = ":".join(labels)
-    formatted_properties = {
-        key: f"'{value}'" if isinstance(value, str) else str(value)
-        for key, value in properties.items()
-    }
-    property_str = ", ".join(
-        f"{key}: {value}" for key, value in formatted_properties.items())
-    query = f"MATCH (n:{labels_str} {{{property_str}}}) DETACH DELETE n"
-
+    query = f"MATCH (n:{labels_str}) DETACH DELETE n"
     return query
 
-
 @app.route('/delete_node', methods=['POST'])
-def delete_node(labels, properties):
+def delete_node():
+    data = request.get_json()  # Retrieve the JSON payload from the request
     driver = get_neo4j_session()
-    # Execute the Cypher query
-    query = delete_node_query(labels, properties)
-    result = driver.run(query)
-    driver.close()
+    labels = data.get('labels', [])  # Retrieve the 'labels' from the payload
 
-    return {'status': "success"}
+    try:
+        # Rest of your code for constructing the query and executing it
+        query = delete_node_query(labels)
+        result = driver.run(query)
+        # Successful deletion
+        return {'status': 'success'}
+    except Exception as e:
+        # Error occurred, handle the exception
+        return {'status': 'error', 'message': str(e)}
+
 
 
 if __name__ == '__main__':
