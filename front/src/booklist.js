@@ -1,12 +1,9 @@
-import './buyer.css';
+import "./buyer.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
-
 function Booksa() {
-
   const [nodes, setNodes] = useState([]);
   const apiUrl = "http://127.0.0.1:5000/";
 
@@ -16,17 +13,16 @@ function Booksa() {
 
   const getNodes = async () => {
     try {
-      const response = await axios.get(apiUrl + "nodes");
+      const response = await axios.get(apiUrl + "nodes/" + activeTab);
       const nodesData = response.data;
-      console.log(nodesData);
       setNodes(nodesData);
     } catch (error) {
       console.error("Error making API request:", error);
     }
   };
-  const NodeListItem = ({ node }) => {
-    const { Author, Content_Warning, ISBN, Name, Release_Date } = node.node;
-  
+
+  const NodeListBook = ({ node }) => {
+    const { Author, Content_Warning, ISBN, Name, Release_Date } = node;
     return (
       <li>
         <div>
@@ -49,9 +45,80 @@ function Booksa() {
     );
   };
 
-  const NodeAddress = ({ node }) => {
-    const { CEO,Address,Author,Name } = node.node;
-  
+  const NodeListWarehouse = ({ node }) => {
+    const { Address, Capacity, Certificated, Name, Temperature_Control } = node;
+    return (
+      <li>
+        <div>
+          <strong>Address:</strong> {Address}
+        </div>
+        <div>
+          <strong>Capacity:</strong>
+          {Capacity}
+        </div>
+        <div>
+          <strong>Certificated:</strong> {Certificated}
+        </div>
+        <div>
+          <strong>Name:</strong> {Name}
+        </div>
+        <div>
+          <strong>Temperature_Control:</strong> {Temperature_Control}
+        </div>
+      </li>
+    );
+  };
+
+  const NodeListCustomer = ({ node }) => {
+    const { Address, Adult, Email, Name, Phone_number } = node;
+    return (
+      <li>
+        <div>
+          <strong>Address:</strong> {Address}
+        </div>
+        <div>
+          <strong>Adult:</strong>
+          {Adult}
+        </div>
+        <div>
+          <strong>Email:</strong> {Email}
+        </div>
+        <div>
+          <strong>Name:</strong> {Name}
+        </div>
+        <div>
+          <strong>Phone:</strong> {Phone_number}
+        </div>
+      </li>
+    );
+  };
+
+  const NodeListRetailer = ({ node }) => {
+    const { Address, Name, Phone_number, Representatives, Website } = node;
+    return (
+      <li>
+        <div>
+          <strong>Address:</strong> {Address}
+        </div>
+        <div>
+          <strong>Name:</strong>
+          {Name}
+        </div>
+        <div>
+          <strong>Phone_number:</strong> {Phone_number}
+        </div>
+        <div>
+          <strong>Representatives:</strong> {Representatives}
+        </div>
+        <div>
+          <strong>Website:</strong> {Website}
+        </div>
+      </li>
+    );
+  };
+
+  const NodeListSupplier = ({ node }) => {
+    const { Address, CEO, Name, Phone_number, Representatives } = node;
     return (
       <li>
         <div>
@@ -61,92 +128,98 @@ function Booksa() {
           <strong>Address:</strong> {Address}
         </div>
         <div>
-          <strong>Author:</strong> {Author}
-        </div>
-        
-        <div>
           <strong>Name:</strong> {Name}
+        </div>
+        <div>
+          <strong>Phone_number:</strong> {Phone_number}
+        </div>
+        <div>
+          <strong>Representatives:</strong> {Representatives}
         </div>
       </li>
     );
   };
-  const [activeTab, setActiveTab] = useState("authors");
+
+  const [activeTab, setActiveTab] = useState("Book");
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
+    getNodes();
   };
 
   return (
     <div className="app">
       <header>
-        
-        <p className='titulo-principal'>
-          Contenedor de libros punto com
-        </p>
+        <p className="titulo-principal">Contenedor de libros punto com</p>
       </header>
 
-    <div className = 'buscador'>
-      <p>Lista de libros</p>
-
-    </div>
-    <Link to='/#'><button className='cambios'>
-        
-        Retailer page
-        
-    </button></Link>
-
-    <div>
-      {/* Tab buttons */}
-      <div>
-        <button
-          onClick={() => handleTabClick("authors")}
-          className={activeTab === "authors" ? "active" : ""}
-        >
-          Authors and Books
-        </button>
-        <button
-          onClick={() => handleTabClick("addresses")}
-          className={activeTab === "addresses" ? "active" : ""}
-        >
-          Addresses
-        </button>
+      <div className="buscador">
+        <p>Lista de libros</p>
       </div>
 
-      {/* Content based on active tab */}
-      {activeTab === "authors" && (
-        <div>
-          <ul className='infobooks'>
-      {nodes.map((node, index) => (
-        <NodeListItem key={index} node={node} />
-      ))}
-    </ul>
-        </div>
-      )}
+      <Link to="/#">
+        <button className="cambios">Retailer page</button>
+      </Link>
 
-      {activeTab === "addresses" && (
+      <div>
+        {/* Tab buttons */}
         <div>
-          <ul className='infobooks'>
-      {nodes.map((node, index) => (
-        <NodeAddress key={index} node={node} />
-      ))}
-    </ul>
+          <button
+            onClick={() => handleTabClick("Book")}
+            className={activeTab === "Book" ? "active" : ""}
+          >
+            Books
+          </button>
+          <button
+            onClick={() => handleTabClick("Customer")}
+            className={activeTab === "Customer" ? "active" : ""}
+          >
+            Customer
+          </button>
+          <button
+            onClick={() => handleTabClick("Warehouse")}
+            className={activeTab === "Warehouse" ? "active" : ""}
+          >
+            Warehouse
+          </button>
+          <button
+            onClick={() => handleTabClick("Retailer")}
+            className={activeTab === "Retailer" ? "active" : ""}
+          >
+            Retailer
+          </button>
+          <button
+            onClick={() => handleTabClick("Supplier")}
+            className={activeTab === "Supplier" ? "active" : ""}
+          >
+            Supplier
+          </button>
         </div>
-      )}
+
+        {/* Content based on active tab */}
+        <div>
+          <ul className="infobooks">
+            {nodes.map((node, index) => {
+              if (activeTab === "Book") {
+                return <NodeListBook key={index} node={node} />;
+              } else if (activeTab === "Customer") {
+                return <NodeListCustomer key={index} node={node} />;
+              } else if (activeTab === "Warehouse") {
+                return <NodeListWarehouse key={index} node={node} />;
+              } else if (activeTab === "Retailer") {
+                return <NodeListRetailer key={index} node={node} />;
+              } else if (activeTab === "Supplier") {
+                return <NodeListSupplier key={index} node={node} />;
+              } else {
+                return null;
+              }
+            })}
+          </ul>
+        </div>
+      </div>
+
+      <div className="has"></div>
     </div>
-
-    {/* <ul className='infobooks'>
-      {nodes.map((node, index) => (
-        <NodeListItem key={index} node={node} />
-      ))}
-    </ul> */}
-    
-<div className='has'>
-
-
-    
-</div>
-    
-</div>
   );
 }
 
