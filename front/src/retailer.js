@@ -19,6 +19,11 @@ function Retailer() {
   const [de,setDe]=useState("")
   const [a,setA]=useState("")
 
+  const [relation2,setRelation2]=useState("")
+  const [de2,setDe2]=useState("")
+  const [a2,setA2]=useState("")
+  const [prop,setProp]=useState("")
+
   const apiUrl = "http://127.0.0.1:5000/";
 
   const handleLabelSelection = (label) => {
@@ -132,7 +137,28 @@ function Retailer() {
     };
   
     axios
-      .post(apiUrl + "delete_node", payload)
+      .post(apiUrl + "delete_relationship", payload)
+      .then(response => {
+        // Node creation successful, handle the response if needed
+        console.log(response.data);
+      })
+      .catch(error => {
+        // Node creation failed, handle the error if needed
+        console.log(error);
+      });
+  };
+
+  const deleteProp = () => {
+    const payload = {
+      de: [de2],
+      a:[a2],
+      relation:[relation2],
+      prop:[prop]
+      
+    };
+  
+    axios
+      .post(apiUrl + "delete_relationship_properties", payload)
       .then(response => {
         // Node creation successful, handle the response if needed
         console.log(response.data);
@@ -254,6 +280,12 @@ function Retailer() {
         >
           Delete relationship
         </button>
+        <button
+          className={`sub-bar-button ${selectedLabels.includes('DeleteProp') ? 'active' : ''}`}
+          onClick={() => { handleLabelSelection('DeleteProp'); setNodeLabel('DeleteProp'); }}
+        >
+          Delete property
+        </button>
       </div>
 
       <button className='cambios' onClick={createNode} disabled={!isCreateNodeButtonEnabled()}>
@@ -331,7 +363,18 @@ function Retailer() {
             
           )} 
 
-          
+          {selectedLabels[0] === "DeleteProp" && (
+            <>
+              <div className='contiene'>
+                <p className='infor'>De <input value={de2} onChange={e => setDe2(e.target.value)} /></p>
+                <p className='infor'>a <input value={a2} onChange={e => setA2(e.target.value)} /></p>
+                <p className='infor'>Relationship <input value={relation2} onChange={e => setRelation2(e.target.value)} /></p>
+                <p className='infor'>Property <input value={prop} onChange={e => setProp(e.target.value)} /></p>
+              </div>
+              <button className='cambios' onClick={deleteProp}>Borrar</button>
+            </>
+            
+          )}
                     
         </div>
       )}
