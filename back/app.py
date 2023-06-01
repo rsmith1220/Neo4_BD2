@@ -49,6 +49,14 @@ def get_nodes():
     return jsonify(nodes)
 
 
+@app.route('/nodes/<node_type>')
+def get_nodes_by_type(node_type):
+    session = get_neo4j_session()
+    result = session.run('MATCH (n:' + node_type + ') RETURN n')
+    nodes = [dict(record['n']) for record in result]
+    return jsonify(nodes)
+
+
 def create_node_query(labels, properties):
     labels_str = ":".join(labels)
     formatted_properties = {
