@@ -122,7 +122,25 @@ function Retailer() {
       });
   };
   
+  const deleteRelationship = () => {
+    const payload = {
+      de: [de],
+      a:[a],
+      relation:[relation]
+      
+    };
   
+    axios
+      .post(apiUrl + "delete_node", payload)
+      .then(response => {
+        // Node creation successful, handle the response if needed
+        console.log(response.data);
+      })
+      .catch(error => {
+        // Node creation failed, handle the error if needed
+        console.log(error);
+      });
+  };
 
   const createRelationship = () => {
     const payload = {
@@ -254,6 +272,17 @@ function Retailer() {
             </>
             
           )}    
+          {selectedLabels[0] === "DeleteRelationship" && (
+            <>
+              <div className='contiene'>
+                <p className='infor'>Node label <input value={de} onChange={e => setDe(e.target.value)} /></p>
+                <p className='infor'>Node label <input value={a} onChange={e => setA(e.target.value)} /></p>
+                <p className='infor'>Node label <input value={relation} onChange={e => setRelation(e.target.value)} /></p>
+              </div>
+              <button className='cambios' onClick={deleteRelationship}>Borrar</button>
+            </>
+            
+          )} 
 
           
                     
