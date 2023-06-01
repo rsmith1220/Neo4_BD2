@@ -91,7 +91,7 @@ function Retailer() {
   const createNode = () => {
     const payload = {
       labels: selectedLabels,
-      properties: { [nodeKey]: nodeValue }
+      properties: nodeProperties
     };
   
     console.log(payload);
