@@ -207,6 +207,12 @@ function Retailer() {
         >
           Delete
         </button>
+        <button
+          className={`sub-bar-button ${selectedLabels.includes('DeleteR') ? 'active' : ''}`}
+          onClick={() => { handleLabelSelection('DeleteR'); setNodeLabel('DeleteR'); }}
+        >
+          Delete relationship
+        </button>
       </div>
 
       <button className='cambios' onClick={createNode} disabled={!isCreateNodeButtonEnabled()}>
@@ -272,12 +278,12 @@ function Retailer() {
             </>
             
           )}    
-          {selectedLabels[0] === "DeleteRelationship" && (
+          {selectedLabels[0] === "DeleteR" && (
             <>
               <div className='contiene'>
-                <p className='infor'>Node label <input value={de} onChange={e => setDe(e.target.value)} /></p>
-                <p className='infor'>Node label <input value={a} onChange={e => setA(e.target.value)} /></p>
-                <p className='infor'>Node label <input value={relation} onChange={e => setRelation(e.target.value)} /></p>
+                <p className='infor'>De <input value={de} onChange={e => setDe(e.target.value)} /></p>
+                <p className='infor'>a <input value={a} onChange={e => setA(e.target.value)} /></p>
+                <p className='infor'>Relationship <input value={relation} onChange={e => setRelation(e.target.value)} /></p>
               </div>
               <button className='cambios' onClick={deleteRelationship}>Borrar</button>
             </>
