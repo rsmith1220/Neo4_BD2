@@ -5,11 +5,12 @@ import axios from "axios";
 function Retailer() {
   const [selectedLabels, setSelectedLabels] = useState([]);
   const [nodeLabel, setNodeLabel] = useState("");
-  const [nodeKey, setNodeKey] = useState("");
+  const [nodeProperties, setNodeProperties] = useState({});
   const [label2, setLabel2] = useState("");
   const [labelPropiedadNodo1, setLabelPropiedadNodo1] = useState("");
   const [labelPropiedadNodo2, setLabelPropiedadNodo2] = useState("");
   const [labelPropiedadNodo3, setLabelPropiedadNodo3] = useState("");
+  const [nodeKey, setNodeKey] = useState("");
   const [nodeValue, setNodeValue] = useState("");
 
   const [relationshipFrom, setRelationshipFrom] = useState("");
@@ -20,6 +21,11 @@ function Retailer() {
   const [relation,setRelation]=useState("")
   const [de,setDe]=useState("")
   const [a,setA]=useState("")
+
+  const [relation2,setRelation2]=useState("")
+  const [de2,setDe2]=useState("")
+  const [a2,setA2]=useState("")
+  const [prop,setProp]=useState("")
 
   const apiUrl = "http://127.0.0.1:5000/";
 
@@ -144,6 +150,47 @@ function Retailer() {
         console.log(error);
       });
   };
+  
+  const deleteRelationship = () => {
+    const payload = {
+      de: [de],
+      a:[a],
+      relation:[relation]
+      
+    };
+  
+    axios
+      .post(apiUrl + "delete_relationship", payload)
+      .then(response => {
+        // Node creation successful, handle the response if needed
+        console.log(response.data);
+      })
+      .catch(error => {
+        // Node creation failed, handle the error if needed
+        console.log(error);
+      });
+  };
+
+  const deleteProp = () => {
+    const payload = {
+      de: [de2],
+      a:[a2],
+      relation:[relation2],
+      prop:[prop]
+      
+    };
+  
+    axios
+      .post(apiUrl + "delete_relationship_properties", payload)
+      .then(response => {
+        // Node creation successful, handle the response if needed
+        console.log(response.data);
+      })
+      .catch(error => {
+        // Node creation failed, handle the error if needed
+        console.log(error);
+      });
+  };
 
   const createRelationship = () => {
     const payload = {
@@ -153,6 +200,8 @@ function Retailer() {
       type: relationshipType
     };
 
+    console.log(payload);
+  
     axios
       .post(apiUrl + "create_relationship", payload)
       .then(response => {
@@ -162,6 +211,44 @@ function Retailer() {
         console.log(error);
       });
   };
+  
+
+  const handleNodePropertyChange = (e) => {
+    const { name, value } = e.target;
+    setNodeProperties(prevProperties => ({
+      ...prevProperties,
+      [name]: value
+    }));
+  };
+  
+  const handleRelationshipPropertyChange = (e) => {
+    const { name, value } = e.target;
+    setRelationshipProperties(prevProperties => ({
+      ...prevProperties,
+      [name]: value
+    }));
+  };
+
+  // licensed by relationship goes from a book to a supplier
+    // start date, end date, exclusive
+  // purchased relationship goes from a customer to a book
+      // purchase date, amount, store
+  // request relationship goes from a customer to a retailer
+      // amount, request date, isbn
+  // owns relationship goes from a supplier to a retailer
+      // percentage owned, invested amount, decision authority
+  // supplies relationship goes from a supplier to a warehouse
+      // supply start, supply end, supply frequency
+  // stored in relationship goes from a book to a warehouse
+      // quantity, arrive date, handling type
+  // has relationship goes from a retailer to a book
+      // amount, price, available
+  // order relationship goes from a retailer to a warehouse
+      // id, isbn, amount
+  // shipment relationship goes from a warehouse to a retailer
+      // id, arrival date, order id
+  // owned by relationship goes from a warehouse to a supplier
+      // percentage owned, invested amount, exclusive
 
   return (
     <div className="app">
@@ -209,6 +296,18 @@ function Retailer() {
           onClick={() => { handleLabelSelection('Delete'); setNodeLabel('Delete'); }}
         >
           Delete
+        </button>
+        <button
+          className={`sub-bar-button ${selectedLabels.includes('DeleteR') ? 'active' : ''}`}
+          onClick={() => { handleLabelSelection('DeleteR'); setNodeLabel('DeleteR'); }}
+        >
+          Delete relationship
+        </button>
+        <button
+          className={`sub-bar-button ${selectedLabels.includes('DeleteProp') ? 'active' : ''}`}
+          onClick={() => { handleLabelSelection('DeleteProp'); setNodeLabel('DeleteProp'); }}
+        >
+          Delete property
         </button>
       </div>
 
@@ -282,8 +381,30 @@ function Retailer() {
             </>
             
           )}    
+          {selectedLabels[0] === "DeleteR" && (
+            <>
+              <div className='contiene'>
+                <p className='infor'>De <input value={de} onChange={e => setDe(e.target.value)} /></p>
+                <p className='infor'>a <input value={a} onChange={e => setA(e.target.value)} /></p>
+                <p className='infor'>Relationship <input value={relation} onChange={e => setRelation(e.target.value)} /></p>
+              </div>
+              <button className='cambios' onClick={deleteRelationship}>Borrar</button>
+            </>
+            
+          )} 
 
-          
+          {selectedLabels[0] === "DeleteProp" && (
+            <>
+              <div className='contiene'>
+                <p className='infor'>De <input value={de2} onChange={e => setDe2(e.target.value)} /></p>
+                <p className='infor'>a <input value={a2} onChange={e => setA2(e.target.value)} /></p>
+                <p className='infor'>Relationship <input value={relation2} onChange={e => setRelation2(e.target.value)} /></p>
+                <p className='infor'>Property <input value={prop} onChange={e => setProp(e.target.value)} /></p>
+              </div>
+              <button className='cambios' onClick={deleteProp}>Borrar</button>
+            </>
+            
+          )}
                     
         </div>
       )}
@@ -291,6 +412,114 @@ function Retailer() {
       <button className='cambios' onClick={createRelationship} disabled={selectedLabels.length < 1}>
         Create Relationship
       </button>
+
+      {
+        // TODO: Add relationship properties
+        relationshipType !== '' && (
+          <div className='contiene_crear'>
+            {relationshipType === 'Licensed_by' && (
+              <>
+                <p className='infor'>From <input name="From" onChange={e => setRelationshipFrom(e.target.value) } /></p>
+                <p className='infor'>To <input name="To" onChange={ e => setRelationshipTo(e.target.value) } /></p>
+                <p className='infor'>Start Date <input name="Start_Date" onChange={handleRelationshipPropertyChange} /></p>
+                <p className='infor'>End Date <input name="End_Date" onChange={handleRelationshipPropertyChange} /></p>
+                <p className='infor'>Exclusive <input name="Exclusive" onChange={handleRelationshipPropertyChange} /></p>
+              </>
+            )}
+            
+            {relationshipType === 'Purchased' && (
+              <>
+                <p className='infor'>From <input name="From" onChange={e => setRelationshipFrom(e.target.value) } /></p>
+                <p className='infor'>To <input name="To" onChange={ e => setRelationshipTo(e.target.value) } /></p>
+                <p className='infor'>Purchase Date <input name="Purchase_Date" onChange={handleRelationshipPropertyChange} /></p>
+                <p className='infor'>Amount <input name="Amount" onChange={handleRelationshipPropertyChange} /></p>
+                <p className='infor'>Store <input name="Store" onChange={handleRelationshipPropertyChange} /></p>
+              </>
+            )}
+            
+            {relationshipType === 'Request' && (
+              <>
+                <p className='infor'>From <input name="From" onChange={e => setRelationshipFrom(e.target.value) } /></p>
+                <p className='infor'>To <input name="To" onChange={ e => setRelationshipTo(e.target.value) } /></p>
+                <p className='infor'>Amount <input name="Amount" onChange={handleRelationshipPropertyChange} /></p>
+                <p className='infor'>Request Date <input name="Request_Date" onChange={handleRelationshipPropertyChange} /></p>
+                <p className='infor'>ISBN <input name="ISBN" onChange={handleRelationshipPropertyChange} /></p>
+              </>
+            )}
+            
+            {relationshipType === 'Owns' && (
+              <>
+                <p className='infor'>From <input name="From" onChange={e => setRelationshipFrom(e.target.value) } /></p>
+                <p className='infor'>To <input name="To" onChange={ e => setRelationshipTo(e.target.value) } /></p>
+                <p className='infor'>Percentage Owned <input name="Percentage_Owned" onChange={handleRelationshipPropertyChange} /></p>
+                <p className='infor'>Invested Amount <input name="Invested_Amount" onChange={handleRelationshipPropertyChange} /></p>
+                <p className='infor'>Decision Authority <input name="Decision_Authority" onChange={handleRelationshipPropertyChange} /></p>
+              </>
+            )}
+            
+            {relationshipType === 'Supplies' && (
+              <>
+                <p className='infor'>From <input name="From" onChange={e => setRelationshipFrom(e.target.value) } /></p>
+                <p className='infor'>To <input name="To" onChange={ e => setRelationshipTo(e.target.value) } /></p>
+                <p className='infor'>Supply Start <input name="Supply_Start" onChange={handleRelationshipPropertyChange} /></p>
+                <p className='infor'>Supply End <input name="Supply_End" onChange={handleRelationshipPropertyChange} /></p>
+                <p className='infor'>Supply Frequency <input name="Supply_Frequency" onChange={handleRelationshipPropertyChange} /></p>
+              </>
+            )}
+            
+            {relationshipType === 'Stored_In' && (
+              <>
+                <p className='infor'>From <input name="From" onChange={e => setRelationshipFrom(e.target.value) } /></p>
+                <p className='infor'>To <input name="To" onChange={ e => setRelationshipTo(e.target.value) } /></p>
+                <p className='infor'>Quantity <input name="Quantity" onChange={handleRelationshipPropertyChange} /></p>
+                <p className='infor'>Arrival Date <input name="Arrival_Date" onChange={handleRelationshipPropertyChange} /></p>
+                <p className='infor'>Handling Type <input name="Handling_Type" onChange={handleRelationshipPropertyChange} /></p>
+              </>
+            )}
+            
+            {relationshipType === 'Has' && (
+              <>
+                <p className='infor'>From <input name="From" onChange={e => setRelationshipFrom(e.target.value) } /></p>
+                <p className='infor'>To <input name="To" onChange={ e => setRelationshipTo(e.target.value) } /></p>
+                <p className='infor'>Amount <input name="Amount" onChange={handleRelationshipPropertyChange} /></p>
+                <p className='infor'>Price <input name="Price" onChange={handleRelationshipPropertyChange} /></p>
+                <p className='infor'>Available <input name="Available" onChange={handleRelationshipPropertyChange} /></p>
+              </>
+            )}
+            
+            {relationshipType === 'Order' && (
+              <>
+                <p className='infor'>From <input name="From" onChange={e => setRelationshipFrom(e.target.value) } /></p>
+                <p className='infor'>To <input name="To" onChange={ e => setRelationshipTo(e.target.value) } /></p>
+                <p className='infor'>ID <input name="ID" onChange={handleRelationshipPropertyChange} /></p>
+                <p className='infor'>ISBN <input name="ISBN" onChange={handleRelationshipPropertyChange} /></p>
+                <p className='infor'>Amount <input name="Amount" onChange={handleRelationshipPropertyChange} /></p>
+              </>
+            )}
+            
+            {relationshipType === 'Shipment' && (
+              <>
+                <p className='infor'>From <input name="From" onChange={e => setRelationshipFrom(e.target.value) } /></p>
+                <p className='infor'>To <input name="To" onChange={ e => setRelationshipTo(e.target.value) } /></p>
+                <p className='infor'>ID <input name="ID" onChange={handleRelationshipPropertyChange} /></p>
+                <p className='infor'>Arrival Date <input name="Arrival_Date" onChange={handleRelationshipPropertyChange} /></p>
+                <p className='infor'>Order ID <input name="Order_ID" onChange={handleRelationshipPropertyChange} /></p>
+              </>
+            )}
+            
+            {relationshipType === 'Owned_by' && (
+              <>
+                <p className='infor'>From <input name="From" onChange={e => setRelationshipFrom(e.target.value) } /></p>
+                <p className='infor'>To <input name="To" onChange={ e => setRelationshipTo(e.target.value) } /></p>
+                <p className='infor'>Percentage Owned <input name="Percentage_Owned" onChange={handleRelationshipPropertyChange} /></p>
+                <p className='infor'>Invested Amount <input name="Invested_Amount" onChange={handleRelationshipPropertyChange} /></p>
+                <p className='infor'>Exclusive <input name="Exclusive" onChange={handleRelationshipPropertyChange} /></p>
+              </>
+            )}
+
+          </div>      
+        )}
+
     </div>
 
     
