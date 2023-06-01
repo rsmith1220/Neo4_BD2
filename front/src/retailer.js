@@ -7,6 +7,7 @@ function Retailer() {
   const [nodeLabel, setNodeLabel] = useState("");
   const [nodeKey, setNodeKey] = useState("");
   const [nodeValue, setNodeValue] = useState("");
+  const [nodeProperties, setNodeProperties] = useState({});
 
   const [relationshipFrom, setRelationshipFrom] = useState("");
   const [relationshipTo, setRelationshipTo] = useState("");
@@ -77,11 +78,11 @@ function Retailer() {
   const createNode = () => {
     const payload = {
       labels: selectedLabels,
-      properties: { [nodeKey]: nodeValue }
+      properties: nodeProperties
     };
-  
+
     console.log(payload);
-  
+
     axios
       .post(apiUrl + "create_node", payload)
       .then(response => {
@@ -121,6 +122,14 @@ function Retailer() {
       });
   };
 
+  const handleNodePropertyChange = (e) => {
+    const { name, value } = e.target;
+    setNodeProperties(prevProperties => ({
+      ...prevProperties,
+      [name]: value
+    }));
+  };
+
   return (
     <div className="app">
       <header>
@@ -134,31 +143,31 @@ function Retailer() {
       <div className='contiene'>
         <button
           className={`sub-bar-button ${selectedLabels.includes('Retailer') ? 'active' : ''}`}
-          onClick={() =>{ handleLabelSelection('Retailer'); setNodeLabel('Retailer'); }}
+          onClick={() => { handleLabelSelection('Retailer'); }}
         >
           Retailer
         </button>
         <button
           className={`sub-bar-button ${selectedLabels.includes('Customer') ? 'active' : ''}`}
-          onClick={() => { handleLabelSelection('Customer'); setNodeLabel('Customer'); }}
+          onClick={() => { handleLabelSelection('Customer'); }}
         >
           Customer
         </button>
         <button
           className={`sub-bar-button ${selectedLabels.includes('Warehouse') ? 'active' : ''}`}
-          onClick={() => { handleLabelSelection('Warehouse'); setNodeLabel('Warehouse'); }}
+          onClick={() => { handleLabelSelection('Warehouse'); }}
         >
           Warehouse
         </button>
         <button
           className={`sub-bar-button ${selectedLabels.includes('Supplier') ? 'active' : ''}`}
-          onClick={() => { handleLabelSelection('Supplier'); setNodeLabel('Supplier'); }}
+          onClick={() => { handleLabelSelection('Supplier'); }}
         >
           Supplier
         </button>
         <button
           className={`sub-bar-button ${selectedLabels.includes('Book') ? 'active' : ''}`}
-          onClick={() => { handleLabelSelection('Book'); setNodeLabel('Book'); }}
+          onClick={() => { handleLabelSelection('Book'); }}
         >
           Book
         </button>
@@ -167,57 +176,56 @@ function Retailer() {
       <button className='cambios' onClick={createNode} disabled={!isCreateNodeButtonEnabled()}>
         Create Node
       </button>
-      
+
       {selectedLabels.length >= 1 && (
         <div className='contiene_crear'>
           {selectedLabels[0] === "Warehouse" && (
             <>
-              <p className='infor'>Address <input name="Address" onChange={e =>{ setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-              <p className='infor'>Name <input name="Name" onChange={e =>{ setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-              <p className='infor'>Capacity <input name="Capacity" onChange={e =>{ setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-              <p className='infor'>Certificated <input name="Certificated" onChange={e =>{ setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-              <p className='infor'>Temperature_Control <input name="Temperature_Control" onChange={e =>{ setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+              <p className='infor'>Address <input name="Address" onChange={handleNodePropertyChange} /></p>
+              <p className='infor'>Name <input name="Name" onChange={handleNodePropertyChange} /></p>
+              <p className='infor'>Capacity <input name="Capacity" onChange={handleNodePropertyChange} /></p>
+              <p className='infor'>Certificated <input name="Certificated" onChange={handleNodePropertyChange} /></p>
+              <p className='infor'>Temperature_Control <input name="Temperature_Control" onChange={handleNodePropertyChange} /></p>
             </>
-            
           )}
           {selectedLabels[0] === "Supplier" && (
             <>
-              <p className='infor'>Address <input name="Address" onChange={e =>{ setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-              <p className='infor'>CEO <input name="CEO" onChange={e =>{ setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-              <p className='infor'>Name <input name="Name" onChange={e =>{ setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-              <p className='infor'>Phone_number <input name="Phone_number" onChange={e =>{ setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-              <p className='infor'>Representatives <input name="Representatives" onChange={e =>{ setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
+              <p className='infor'>Address <input name="Address" onChange={handleNodePropertyChange} /></p>
+              <p className='infor'>CEO <input name="CEO" onChange={handleNodePropertyChange} /></p>
+              <p className='infor'>Name <input name="Name" onChange={handleNodePropertyChange} /></p>
+              <p className='infor'>Phone_number <input name="Phone_number" onChange={handleNodePropertyChange} /></p>
+              <p className='infor'>Representatives <input name="Representatives" onChange={handleNodePropertyChange} /></p>
             </>
           )}
           {selectedLabels[0] === "Book" && (
             <>
-            <p className='infor'>Author <input name="Author" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-            <p className='infor'>Content_Warning <input name="Content_Warning" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-            <p className='infor'>ISBN <input name="ISBN" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-            <p className='infor'>Name <input name="Name" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-            <p className='infor'>Release_Date <input name="Release_Date" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-          </>
+              <p className='infor'>Author <input name="Author" onChange={handleNodePropertyChange} /></p>
+              <p className='infor'>Content_Warning <input name="Content_Warning" onChange={handleNodePropertyChange} /></p>
+              <p className='infor'>ISBN <input name="ISBN" onChange={handleNodePropertyChange} /></p>
+              <p className='infor'>Name <input name="Name" onChange={handleNodePropertyChange} /></p>
+              <p className='infor'>Release_Date <input name="Release_Date" onChange={handleNodePropertyChange} /></p>
+            </>
           )}
-          
+
           {selectedLabels[0] === "Customer" && (
             <>
-            <p className='infor'>Address <input name="Address" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-            <p className='infor'>Adult <input name="Adult" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-            <p className='infor'>Email <input name="Email" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-            <p className='infor'>Name <input name="Name" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-            <p className='infor'>Phone_number <input name="Phone_number" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-          </>
+              <p className='infor'>Address <input name="Address" onChange={handleNodePropertyChange} /></p>
+              <p className='infor'>Adult <input name="Adult" onChange={handleNodePropertyChange} /></p>
+              <p className='infor'>Email <input name="Email" onChange={handleNodePropertyChange} /></p>
+              <p className='infor'>Name <input name="Name" onChange={handleNodePropertyChange} /></p>
+              <p className='infor'>Phone_number <input name="Phone_number" onChange={handleNodePropertyChange} /></p>
+            </>
           )}
 
           {selectedLabels[0] === "Retailer" && (
             <>
-            <p className='infor'>Address <input name="Address" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-            <p className='infor'>Name <input name="Name" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-            <p className='infor'>Phone_number <input name="Phone_number" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-            <p className='infor'>Representatives <input name="Representatives" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-            <p className='infor'>Website <input name="Website" onChange={e => { setNodeValue(e.target.value); setNodeKey(e.target.name); }} /></p>
-          </>
-          )}                    
+              <p className='infor'>Address <input name="Address" onChange={handleNodePropertyChange} /></p>
+              <p className='infor'>Name <input name="Name" onChange={handleNodePropertyChange} /></p>
+              <p className='infor'>Phone_number <input name="Phone_number" onChange={handleNodePropertyChange} /></p>
+              <p className='infor'>Representatives <input name="Representatives" onChange={handleNodePropertyChange} /></p>
+              <p className='infor'>Website <input name="Website" onChange={handleNodePropertyChange} /></p>
+            </>
+          )}
         </div>
       )}
 
