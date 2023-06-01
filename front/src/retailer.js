@@ -7,6 +7,9 @@ function Retailer() {
   const [nodeLabel, setNodeLabel] = useState("");
   const [nodeKey, setNodeKey] = useState("");
   const [label2, setLabel2] = useState("");
+  const [labelPropiedadNodo1, setLabelPropiedadNodo1] = useState("");
+  const [labelPropiedadNodo2, setLabelPropiedadNodo2] = useState("");
+  const [labelPropiedadNodo3, setLabelPropiedadNodo3] = useState("");
   const [nodeValue, setNodeValue] = useState("");
 
   const [relationshipFrom, setRelationshipFrom] = useState("");
@@ -104,6 +107,7 @@ function Retailer() {
       relationshipType !== ""
     );
   };
+
   const deleteNode = () => {
     const payload = {
       labels: [label2]
@@ -122,7 +126,24 @@ function Retailer() {
       });
   };
   
+  const deleteNodePropiedad = () => {
+    const payload = {
+      labels: [labelPropiedadNodo1],
+      properties: [labelPropiedadNodo2],
+      properties_to_delete: [labelPropiedadNodo3]
+    };
   
+    axios
+      .post(apiUrl + "delete_node_properties", payload)
+      .then(response => {
+        // Node creation successful, handle the response if needed
+        console.log(response.data);
+      })
+      .catch(error => {
+        // Node creation failed, handle the error if needed
+        console.log(error);
+      });
+  };
 
   const createRelationship = () => {
     const payload = {
@@ -247,10 +268,17 @@ function Retailer() {
           )}  
           {selectedLabels[0] === "Delete" && (
             <>
+              <p>Eliminar option</p>
               <div className='contiene'>
-                <p className='infor'>Node label <input value={label2} onChange={e => setLabel2(e.target.value)} /></p>
+                <p className='infor'>Nodo <input value={label2} onChange={e => setLabel2(e.target.value)} /></p>
               </div>
               <button className='cambios' onClick={deleteNode}>Borrar</button>
+              <div className='contiene'>
+                <p className='infor'>Label<input value={label2} onChange={e => setLabelPropiedadNodo1(e.target.value)} /></p>
+                <p className='infor'>Propiedad<input value={label2} onChange={e => setLabelPropiedadNodo2(e.target.value)} /></p>
+                <p className='infor'>Propiedad a eliminar<input value={label2} onChange={e => setLabelPropiedadNodo3(e.target.value)} /></p>
+              </div>
+              <button className='cambios' onClick={deleteNodePropiedad}>Borrar</button>
             </>
             
           )}    
