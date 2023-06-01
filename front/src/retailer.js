@@ -104,8 +104,23 @@ function Retailer() {
     );
   };
 
+  const deleteNode = () => {
+    const payload = {
+      labels: [label2]
+      
+    };
   
-  
+    axios
+      .post(apiUrl + "delete_node", payload)
+      .then(response => {
+        // Node creation successful, handle the response if needed
+        console.log(response.data);
+      })
+      .catch(error => {
+        // Node creation failed, handle the error if needed
+        console.log(error);
+      });
+  };
   
   
 
@@ -198,6 +213,12 @@ function Retailer() {
           onClick={() => { handleLabelSelection('Book'); }}
         >
           Book
+        </button>
+        <button
+          className={`sub-bar-button ${selectedLabels.includes('Delete') ? 'active' : ''}`}
+          onClick={() => { handleLabelSelection('Delete'); setNodeLabel('Delete'); }}
+        >
+          Delete
         </button>
       </div>
       <div className='contiene'>
@@ -322,6 +343,15 @@ function Retailer() {
               <p className='infor'>Website <input name="Website" onChange={handleNodePropertyChange} /></p>
             </>
           )}
+          {selectedLabels[0] === "Delete" && (
+            <>
+              <div className='contiene'>
+                <p className='infor'>Node label <input value={label2} onChange={e => setLabel2(e.target.value)} /></p>
+              </div>
+              <button className='cambios' onClick={deleteNode}>Borrar</button>
+            </>
+            
+          )} 
         </div>
       )}
 
@@ -344,6 +374,8 @@ function Retailer() {
             
 
     </div>
+
+    
   );
 }
 
